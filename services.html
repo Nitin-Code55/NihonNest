@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | NihonNest</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .services-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+        .service-detail {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        .service-detail:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .service-icon {
+            flex: 0 0 150px;
+            height: 150px;
+            background-color: rgba(192, 57, 43, 0.1);
+            color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        .service-text {
+            flex: 1;
+        }
+        .service-price {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .service-detail, .service-detail:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar scrolled">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">🇯🇵 NihonNest</a>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="softlanding.html">Soft Landing</a>
+                <a href="about.html">About</a>
+                <a href="consult.html" class="btn btn-primary" style="padding: 8px 16px;">Book Consultation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="services-header">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>End-to-end support for your journey to Japan.</p>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 4rem 0;">
+        
+        <!-- Service 1 -->
+        <div class="service-detail fade-in">
+            <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+            <div class="service-text">
+                <div class="service-price">Free for candidate</div>
+                <h2>1. Job Placement</h2>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">We connect you with verified Japanese employers looking for SSW talent. You don't pay anything for placement; the company pays our fee (¥50,000–1,00,000).</p>
+                <a href="jobs.html" class="btn btn-primary">Find Jobs</a>
+            </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-detail fade-in">
+            <div class="service-icon"><i class="fas fa-passport"></i></div>
+            <div class="service-text">
+                <div class="service-price">₹499</div>
+                <h2>2. Visa Guidance Pack</h2>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">A comprehensive PDF guide and checklist for the SSW visa process, created based on real experiences. Step-by-step instructions in easy-to-understand language.</p>
+                <a href="#" class="btn btn-primary">Buy Guide</a>
+            </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-detail fade-in">
+            <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+            <div class="service-text">
+                <div class="service-price">₹999 – ₹1,999</div>
+                <h2>3. 履歴書 CV Writing</h2>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">Japanese employers expect resumes in a specific format (Rirekisho). We will craft a professional Japanese CV that highlights your skills perfectly.</p>
+                <a href="consult.html" class="btn btn-primary">Request CV Writing</a>
+            </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-detail fade-in">
+            <div class="service-icon"><i class="fas fa-home"></i></div>
+            <div class="service-text">
+                <div class="service-price">From ¥35,000/month</div>
+                <h2>4. Soft Landing Package</h2>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">Don't worry about finding an apartment without a guarantor. Get a shared room from Day 1, plus optional Indian home-cooked meals.</p>
+                <a href="softlanding.html" class="btn btn-primary">Explore Soft Landing</a>
+            </div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="service-detail fade-in">
+            <div class="service-icon"><i class="fas fa-plane-arrival"></i></div>
+            <div class="service-text">
+                <div class="service-price">¥3,000 – 5,000</div>
+                <h2>5. Airport Pickup & Orientation</h2>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">Landing in a new country can be overwhelming. We'll pick you up from the airport, guide you to your room, and help you get your residence card, phone sim, and bank account setup.</p>
+                <a href="consult.html" class="btn btn-primary">Book Pickup</a>
+            </div>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="service-detail fade-in">
+            <div class="service-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="service-text">
+                <div class="service-price">₹500 – ₹1,000 / session</div>
+                <h2>6. 1-on-1 Consultation Call</h2>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">Confused about your options? Book a 30-45 minute video call to discuss your profile, Japanese language progress, and prospects in Japan.</p>
+                <a href="consult.html" class="btn btn-primary">Book a Call</a>
+            </div>
+        </div>
+
+        <!-- Service 7 -->
+        <div class="service-detail fade-in">
+            <div class="service-icon"><i class="fas fa-users"></i></div>
+            <div class="service-text">
+                <div class="service-price">₹199 / month</div>
+                <h2>7. Community Membership</h2>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">Join our exclusive WhatsApp/Discord community of SSW aspirants and those already in Japan. Ask questions, share tips, and find friends.</p>
+                <a href="#" class="btn btn-primary">Join Community</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="index.html" class="footer-logo">🇯🇵 NihonNest</a>
+                    <p style="margin-bottom: 1rem;">India's first verified Japan Settlement & Placement Platform. Job. Ghar. Khana. Community.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="jobs.html">Find Jobs</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="softlanding.html">Soft Landing Package</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="consult.html">Book Consultation</a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i> +91 XXXXXXXXXX</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> hello@nihonnest.in</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Social</h4>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NihonNest.in. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="#" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

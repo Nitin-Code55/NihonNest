@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Consultation | NihonNest</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .consult-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+        .consult-container {
+            max-width: 800px;
+            margin: -40px auto 4rem;
+            background: white;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+        .payment-note {
+            background-color: rgba(192, 57, 43, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+        .payment-note p {
+            color: var(--primary-color);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        /* Success Message Overlay */
+        .success-overlay {
+            display: none;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: white;
+            border-radius: var(--border-radius);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            z-index: 20;
+        }
+        .success-overlay i {
+            font-size: 5rem;
+            color: #25D366;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar scrolled">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">🇯🇵 NihonNest</a>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="services.html">Services</a>
+                <a href="softlanding.html">Soft Landing</a>
+                <a href="about.html">About</a>
+                <a href="consult.html" class="active btn btn-primary" style="padding: 8px 16px;">Book Consultation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="consult-header">
+        <div class="container">
+            <h1>Let's Talk About Your Japan Dream</h1>
+            <p>Get clear, honest guidance. No false promises.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <div class="consult-container fade-in">
+            
+            <div class="payment-note">
+                <p><strong>Note:</strong> A consultation fee of <strong>₹500</strong> is required to confirm the booking. You can pay via UPI after submitting this form. Our team will contact you on WhatsApp with payment details.</p>
+            </div>
+
+            <form id="consult-form">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control" required placeholder="you@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>WhatsApp Number</label>
+                        <input type="tel" class="form-control" required placeholder="+91 xxxxxxxxxx">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current Situation</label>
+                        <select class="form-control" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="planning">Still in India planning</option>
+                            <option value="applied">Already applied for SSW</option>
+                            <option value="job_offer">Have job offer, need visa help</option>
+                            <option value="in_japan">Already in Japan, need accommodation</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label>Preferred Time Slot</label>
+                        <div style="display: flex; gap: 1rem;">
+                            <input type="date" class="form-control" required style="flex: 1;">
+                            <input type="time" class="form-control" required style="flex: 1;">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label>Your Question / What do you need help with?</label>
+                        <textarea class="form-control" required placeholder="Please provide some details so we can prepare for the call..."></textarea>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; padding: 15px; font-size: 1.1rem;">Submit & Proceed to Pay</button>
+            </form>
+
+            <!-- Success Overlay -->
+            <div id="success-message" class="success-overlay">
+                <i class="fas fa-check-circle"></i>
+                <h2 style="color: var(--primary-color); margin-bottom: 1rem;">Request Received!</h2>
+                <p style="color: var(--text-light); margin-bottom: 2rem; max-width: 400px;">Your consultation request has been successfully submitted. Please click below to connect with us on WhatsApp and complete your ₹500 payment.</p>
+                <a href="#" class="btn btn-primary" style="background-color: #25D366; border-color: #25D366; display: flex; align-items: center; gap: 10px;">
+                    <i class="fab fa-whatsapp" style="color: white; font-size: 1.2rem; margin: 0;"></i> Pay & Confirm via WhatsApp
+                </a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="index.html" class="footer-logo">🇯🇵 NihonNest</a>
+                    <p style="margin-bottom: 1rem;">India's first verified Japan Settlement & Placement Platform. Job. Ghar. Khana. Community.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="jobs.html">Find Jobs</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="softlanding.html">Soft Landing Package</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="consult.html">Book Consultation</a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i> +91 XXXXXXXXXX</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> hello@nihonnest.in</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Social</h4>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NihonNest.in. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="#" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const consultForm = document.getElementById('consult-form');
+            const successMessage = document.getElementById('success-message');
+
+            if (consultForm) {
+                // Prevent generic main.js handler from interfering if we want a custom overlay
+                // The main.js has a generic form interceptor, but we want a custom overlay here.
+                // We'll override it by using a specific event listener and stopping propagation if needed, 
+                // but since main.js binds to form:not(#calculator-form), it WILL bind to this form.
+                // To avoid conflict, let's just handle the success overlay here.
+                
+                consultForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    e.stopImmediatePropagation(); // Prevent main.js from handling it
+
+                    consultForm.style.opacity = '0.2';
+                    successMessage.style.display = 'flex';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

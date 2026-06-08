@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | NihonNest</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .about-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+        .founder-story {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+        .founder-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-color: #ddd;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #aaa;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .founder-text {
+            flex: 1.5;
+        }
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 4rem auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--accent-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-item.left {
+            left: 0;
+        }
+        .timeline-item.right {
+            left: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid var(--accent-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-item.right::after {
+            left: -10px;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        .timeline-content p {
+            color: var(--text-light);
+        }
+        @media screen and (max-width: 768px) {
+            .founder-story {
+                flex-direction: column;
+                text-align: center;
+            }
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-item.right {
+                left: 0;
+            }
+            .timeline-item.left::after, .timeline-item.right::after {
+                left: 21px;
+            }
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .contact-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar scrolled">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">🇯🇵 NihonNest</a>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="services.html">Services</a>
+                <a href="softlanding.html">Soft Landing</a>
+                <a href="about.html" class="active">About</a>
+                <a href="consult.html" class="btn btn-primary" style="padding: 8px 16px;">Book Consultation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="about-header">
+        <div class="container">
+            <h1>Our Story</h1>
+            <p>From an SSW Truck Driver to building a community for Indians in Japan.</p>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 4rem 0;">
+        
+        <!-- Founder Story -->
+        <div class="founder-story fade-in">
+            <div class="founder-image">
+                <i class="fas fa-user-circle"></i>
+                <!-- Placeholder for Founder Image -->
+            </div>
+            <div class="founder-text">
+                <h2 style="color: var(--primary-color); margin-bottom: 1rem;">Main khud SSW se Japan gaya.</h2>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.8;">
+                    "Hi, I'm the founder of NihonNest. I currently work as a truck driver in Japan on an SSW visa. Jab main India se plan kar raha tha, I realized how confusing and scary the process is. Agencies asking for lakhs of rupees, fake job promises, and no one to help with accommodation once you land."
+                </p>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.8;">
+                    "I went through it all. I studied JLPT N4, applied for jobs, figured out the paperwork, and finally landed here. Par yahan aake bhi struggle tha—apartment lene ke liye guarantor chahiye, aur duty ke baad khana banana mushkil hota tha."
+                </p>
+                <p style="font-weight: 600; color: var(--primary-color); font-size: 1.2rem; border-left: 4px solid var(--accent-color); padding-left: 15px;">
+                    "NihonNest isliye banaya kyunki main chahta hoon ki jo struggle maine dekha, wo kisi aur Indian bhai-behen ko na dekhna pade. We provide verified jobs, a ready-to-move room, and Indian food from Day 1."
+                </p>
+            </div>
+        </div>
+
+        <!-- Mission -->
+        <div class="section-title fade-in" style="margin-top: 6rem;">
+            <h2>Our Mission</h2>
+            <p style="max-width: 800px; margin: 1rem auto 0; color: var(--text-light);">To make Japan the most accessible, safe, and transparent destination for Indian workers by providing end-to-end guidance, verified employment, and a welcoming community.</p>
+        </div>
+
+        <!-- Timeline -->
+        <h2 style="text-align: center; color: var(--primary-color); margin-top: 4rem;" class="fade-in">The Journey</h2>
+        <div class="timeline fade-in">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>Started as a Student</h3>
+                    <p>Began studying Japanese from scratch in India, aiming for a better future.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>Cleared JLPT N4</h3>
+                    <p>Passed the JLPT N4 and the SSW skill exams for the transport sector.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>Applied for SSW Visa</h3>
+                    <p>Navigated the complex visa and paperwork process without an expensive agent.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>Landed in Japan</h3>
+                    <p>Started working as a Truck Driver. Faced initial struggles with housing and food.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3 style="color: var(--accent-color);">Started NihonNest</h3>
+                    <p>Launched this platform to help others settle in Japan smoothly.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="section-title fade-in" style="margin-top: 6rem;">
+            <h2>Connect With Us</h2>
+        </div>
+        <div class="contact-grid fade-in">
+            <a href="#" class="contact-card">
+                <i class="fab fa-whatsapp"></i>
+                <h3 style="color: var(--primary-color); margin-bottom: 5px;">WhatsApp</h3>
+                <p style="color: var(--text-light);">+91 XXXXXXXXXX</p>
+            </a>
+            <a href="#" class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3 style="color: var(--primary-color); margin-bottom: 5px;">Email</h3>
+                <p style="color: var(--text-light);">hello@nihonnest.in</p>
+            </a>
+            <a href="#" class="contact-card">
+                <i class="fab fa-instagram" style="color: #E1306C;"></i>
+                <h3 style="color: var(--primary-color); margin-bottom: 5px;">Instagram</h3>
+                <p style="color: var(--text-light);">@nihonnest</p>
+            </a>
+            <a href="#" class="contact-card">
+                <i class="fab fa-youtube" style="color: #FF0000;"></i>
+                <h3 style="color: var(--primary-color); margin-bottom: 5px;">YouTube</h3>
+                <p style="color: var(--text-light);">NihonNest India</p>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="index.html" class="footer-logo">🇯🇵 NihonNest</a>
+                    <p style="margin-bottom: 1rem;">India's first verified Japan Settlement & Placement Platform. Job. Ghar. Khana. Community.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="jobs.html">Find Jobs</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="softlanding.html">Soft Landing Package</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="consult.html">Book Consultation</a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i> +91 XXXXXXXXXX</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> hello@nihonnest.in</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Social</h4>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NihonNest.in. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="#" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

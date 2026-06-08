@@ -1,0 +1,7 @@
+[
+  { "id": 1, "title": "Truck Driver", "company": "Verified Logistics Co.", "city": "Tokyo", "salary": "220000", "language": "N4", "housing": true, "sector": "Transport" },
+  { "id": 2, "title": "Warehouse Staff", "company": "Anonymous", "city": "Osaka", "salary": "185000", "language": "N5", "housing": true, "sector": "Warehouse" },
+  { "id": 3, "title": "Factory Worker", "company": "Auto Parts Manufacturer", "city": "Nagoya", "salary": "195000", "language": "None", "housing": true, "sector": "Factory" },
+  { "id": 4, "title": "Care Worker", "company": "Verified Care Home", "city": "Fukuoka", "salary": "200000", "language": "N4", "housing": false, "sector": "Care" },
+  { "id": 5, "title": "Kitchen Staff", "company": "Indian Restaurant Group", "city": "Tokyo", "salary": "175000", "language": "N5", "housing": false, "sector": "F&B" }
+]

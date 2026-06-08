@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soft Landing Package | NihonNest</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-softlanding {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        .bundle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .bundle-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--accent-color);
+        }
+        .bundle-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        .bundle-card ul li {
+            margin-bottom: 0.8rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .bundle-card ul li i {
+            color: var(--accent-color);
+        }
+        .calc-box {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-top: 3rem;
+        }
+        .total-price {
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1.5rem;
+        }
+        .faq-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar scrolled">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">🇯🇵 NihonNest</a>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="services.html">Services</a>
+                <a href="softlanding.html" class="active">Soft Landing</a>
+                <a href="about.html">About</a>
+                <a href="consult.html" class="btn btn-primary" style="padding: 8px 16px;">Book Consultation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="hero-softlanding">
+        <div class="container">
+            <h1 class="fade-in">Land in Japan. Everything Ready.</h1>
+            <p class="fade-in" style="transition-delay: 0.2s;">Skip the stress of finding guarantors and cooking after a long shift.</p>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 4rem 0;">
+        
+        <div class="section-title fade-in">
+            <h2>What's Included?</h2>
+        </div>
+
+        <div class="bundle-grid">
+            <!-- Room -->
+            <div class="bundle-card fade-in">
+                <h3 style="font-size: 1.5rem; color: var(--primary-color);">🏡 Accommodation</h3>
+                <h4 style="color: var(--accent-color); margin-top: 0.5rem;">¥35,000 / month</h4>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Shared flat with other Indians</li>
+                    <li><i class="fas fa-check-circle"></i> No guarantor required</li>
+                    <li><i class="fas fa-check-circle"></i> Zero key money / deposit</li>
+                    <li><i class="fas fa-check-circle"></i> Basic furniture & Wi-Fi included</li>
+                    <li><i class="fas fa-check-circle"></i> Safe Japanese neighborhoods</li>
+                </ul>
+            </div>
+
+            <!-- Food -->
+            <div class="bundle-card fade-in" style="transition-delay: 0.2s;">
+                <h3 style="font-size: 1.5rem; color: var(--primary-color);">🍛 Indian Meals</h3>
+                <h4 style="color: var(--accent-color); margin-top: 0.5rem;">¥18,000 / month</h4>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> 2 fresh meals per day (Lunch/Dinner)</li>
+                    <li><i class="fas fa-check-circle"></i> Authentic Indian home cooking</li>
+                    <li><i class="fas fa-check-circle"></i> Veg & Non-Veg options</li>
+                    <li><i class="fas fa-check-circle"></i> Delivered to your accommodation</li>
+                    <li><i class="fas fa-check-circle"></i> Save hours of cooking after work</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Calculator Form -->
+        <div class="calc-box fade-in" id="booking-section">
+            <h2 style="margin-bottom: 1.5rem; color: var(--primary-color);">Book Your Package</h2>
+            <form id="calculator-form">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Arrival Date in Japan (Approx)</label>
+                        <input type="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Duration</label>
+                        <select id="calc-duration" class="form-control">
+                            <option value="1">1 Month</option>
+                            <option value="2">2 Months</option>
+                            <option value="3">3 Months</option>
+                            <option value="6">6 Months</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="display: flex; flex-direction: column; justify-content: center;">
+                        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                            <input type="checkbox" id="calc-food" checked style="width: 20px; height: 20px; accent-color: var(--accent-color);">
+                            Include Tiffin Service
+                        </label>
+                    </div>
+                </div>
+                
+                <div style="text-align: right; border-top: 1px solid #ddd; padding-top: 1.5rem;">
+                    <p style="color: var(--text-light);">Estimated Total (in JPY):</p>
+                    <div class="total-price" id="calc-total">¥53,000</div>
+                    <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;" id="calc-inr">(Approx. ₹28,000)</p>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 1.5rem; padding: 15px 30px; font-size: 1.1rem;">Book Soft Landing</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- FAQs -->
+        <div style="margin-top: 5rem;" class="fade-in">
+            <h2 style="color: var(--primary-color); margin-bottom: 2rem;">Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h4>Do I need a guarantor to rent the room?</h4>
+                <p style="color: var(--text-light);">No. Since you are booking through NihonNest, we take care of the guarantor requirements. You just move in.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can I choose not to take the food package?</h4>
+                <p style="color: var(--text-light);">Yes, the tiffin service is completely optional. You can uncheck it in the booking form above.</p>
+            </div>
+            <div class="faq-item">
+                <h4>How far is the accommodation from my workplace?</h4>
+                <p style="color: var(--text-light);">We match you with accommodations that are within a reasonable commute (usually under 45 minutes) via train from your workplace.</p>
+            </div>
+            <div class="faq-item">
+                <h4>What happens after my selected duration ends?</h4>
+                <p style="color: var(--text-light);">You can choose to extend your stay on a monthly basis, or if you feel comfortable, you can rent your own independent apartment. We can help guide you through that process as well.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="index.html" class="footer-logo">🇯🇵 NihonNest</a>
+                    <p style="margin-bottom: 1rem;">India's first verified Japan Settlement & Placement Platform. Job. Ghar. Khana. Community.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="jobs.html">Find Jobs</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="softlanding.html">Soft Landing Package</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="consult.html">Book Consultation</a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i> +91 XXXXXXXXXX</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> hello@nihonnest.in</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Social</h4>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NihonNest.in. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="#" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const durationSelect = document.getElementById('calc-duration');
+            const foodCheckbox = document.getElementById('calc-food');
+            const totalDisplay = document.getElementById('calc-total');
+            const inrDisplay = document.getElementById('calc-inr');
+            const form = document.getElementById('calculator-form');
+
+            const RENT_PRICE = 35000;
+            const FOOD_PRICE = 18000;
+            const JPY_TO_INR = 0.53; // Approximate conversion rate for display
+
+            function calculateTotal() {
+                const months = parseInt(durationSelect.value);
+                const includesFood = foodCheckbox.checked;
+
+                let monthlyCost = RENT_PRICE;
+                if (includesFood) monthlyCost += FOOD_PRICE;
+
+                const totalJPY = monthlyCost * months;
+                const totalINR = totalJPY * JPY_TO_INR;
+
+                totalDisplay.innerText = `¥${totalJPY.toLocaleString()}`;
+                inrDisplay.innerText = `(Approx. ₹${totalINR.toLocaleString('en-IN', {maximumFractionDigits: 0})})`;
+            }
+
+            durationSelect.addEventListener('change', calculateTotal);
+            foodCheckbox.addEventListener('change', calculateTotal);
+
+            // Initial calculation
+            calculateTotal();
+
+            // Form Submit handler
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const btn = form.querySelector('button[type="submit"]');
+                    const originalText = btn.innerText;
+                    
+                    btn.innerText = 'Booking Request Sent! ✓';
+                    btn.style.backgroundColor = '#25D366';
+                    btn.style.borderColor = '#25D366';
+                    
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.style.backgroundColor = '';
+                        btn.style.borderColor = '';
+                        form.reset();
+                        calculateTotal(); // reset prices
+                    }, 3000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
