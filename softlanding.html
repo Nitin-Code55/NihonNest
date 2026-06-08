@@ -270,18 +270,43 @@
                     e.preventDefault();
                     const btn = form.querySelector('button[type="submit"]');
                     const originalText = btn.innerText;
-                    
-                    btn.innerText = 'Booking Request Sent! ✓';
-                    btn.style.backgroundColor = '#25D366';
-                    btn.style.borderColor = '#25D366';
-                    
-                    setTimeout(() => {
-                        btn.innerText = originalText;
-                        btn.style.backgroundColor = '';
-                        btn.style.borderColor = '';
-                        form.reset();
-                        calculateTotal(); // reset prices
-                    }, 3000);
+                    btn.innerText = 'Sending...';
+
+                    // Gather form data
+                    const formData = {
+                        fullName: form.querySelector('input[type="text"]').value,
+                        arrivalDate: form.querySelector('input[type="date"]').value,
+                        durationMonths: parseInt(document.getElementById('calc-duration').value),
+                        includeFood: document.getElementById('calc-food').checked,
+                        totalCostJPY: (35000 + (document.getElementById('calc-food').checked ? 18000 : 0)) * parseInt(document.getElementById('calc-duration').value)
+                    };
+
+                    fetch('/api/softlanding', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    }).then(res => {
+                        if (res.ok) {
+                            btn.innerText = 'Booking Request Sent! ✓';
+                            btn.style.backgroundColor = '#25D366';
+                            btn.style.borderColor = '#25D366';
+                            
+                            setTimeout(() => {
+                                btn.innerText = originalText;
+                                btn.style.backgroundColor = '';
+                                btn.style.borderColor = '';
+                                form.reset();
+                                calculateTotal(); // reset prices
+                            }, 3000);
+                        } else {
+                            btn.innerText = 'Error! Try again.';
+                            setTimeout(() => { btn.innerText = originalText; }, 2000);
+                        }
+                    }).catch(err => {
+                        console.error(err);
+                        btn.innerText = 'Error! Try again.';
+                        setTimeout(() => { btn.innerText = originalText; }, 2000);
+                    });
                 });
             }
         });

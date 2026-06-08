@@ -214,12 +214,46 @@
                 // but since main.js binds to form:not(#calculator-form), it WILL bind to this form.
                 // To avoid conflict, let's just handle the success overlay here.
                 
-                consultForm.addEventListener('submit', (e) => {
+                consultForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
                     e.stopImmediatePropagation(); // Prevent main.js from handling it
 
-                    consultForm.style.opacity = '0.2';
-                    successMessage.style.display = 'flex';
+                    const submitBtn = consultForm.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerText;
+                    submitBtn.innerText = 'Processing...';
+
+                    // Gather data
+                    const inputs = consultForm.querySelectorAll('.form-control');
+                    const formData = {
+                        fullName: inputs[0].value,
+                        email: inputs[1].value,
+                        whatsapp: inputs[2].value,
+                        situation: inputs[3].value,
+                        preferredDate: inputs[4].value,
+                        preferredTime: inputs[5].value,
+                        question: inputs[6].value
+                    };
+
+                    try {
+                        const response = await fetch('/api/consultations', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(formData)
+                        });
+
+                        if (response.ok) {
+                            consultForm.style.opacity = '0.2';
+                            successMessage.style.display = 'flex';
+                            submitBtn.innerText = originalText;
+                        } else {
+                            submitBtn.innerText = 'Error! Try again.';
+                            setTimeout(() => { submitBtn.innerText = originalText; }, 2000);
+                        }
+                    } catch (err) {
+                        console.error(err);
+                        submitBtn.innerText = 'Error! Try again.';
+                        setTimeout(() => { submitBtn.innerText = originalText; }, 2000);
+                    }
                 });
             }
         });

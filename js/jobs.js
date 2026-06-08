@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let allJobs = [];
 
-    // Fetch jobs
-    fetch('data/jobs.json')
+    // Fetch jobs from backend API instead of static file
+    fetch('/api/jobs')
         .then(response => response.json())
         .then(data => {
             allJobs = data;
@@ -93,18 +93,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (applyForm) {
-        applyForm.addEventListener('submit', (e) => {
+        applyForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = applyForm.querySelector('button[type="submit"]');
-            btn.innerText = 'Application Sent! ✓';
-            btn.style.backgroundColor = '#25D366';
             
-            setTimeout(() => {
-                modal.style.display = 'none';
-                btn.innerText = 'Submit Application';
-                btn.style.backgroundColor = '';
-                applyForm.reset();
-            }, 2000);
+            // Gather form data
+            const formData = {
+                jobTitle: document.getElementById('apply-job-title').value,
+                fullName: applyForm.querySelector('input[type="text"]:nth-of-type(1)').value,
+                email: applyForm.querySelector('input[type="email"]').value,
+                phone: applyForm.querySelector('input[type="tel"]').value,
+                jlptLevel: applyForm.querySelector('select').value,
+                currentCity: applyForm.querySelectorAll('input[type="text"]')[1].value
+            };
+
+            const originalText = btn.innerText;
+            btn.innerText = 'Sending...';
+
+            try {
+                const response = await fetch('/api/applications', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    btn.innerText = 'Application Sent! ✓';
+                    btn.style.backgroundColor = '#25D366';
+                    
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                        btn.innerText = 'Submit Application';
+                        btn.style.backgroundColor = '';
+                        applyForm.reset();
+                    }, 2000);
+                } else {
+                    btn.innerText = 'Error! Try again.';
+                    setTimeout(() => { btn.innerText = originalText; }, 2000);
+                }
+            } catch (err) {
+                console.error(err);
+                btn.innerText = 'Error! Try again.';
+                setTimeout(() => { btn.innerText = originalText; }, 2000);
+            }
         });
     }
 });
