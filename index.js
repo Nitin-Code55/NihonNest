@@ -24,10 +24,7 @@ app.use(express.static(path.join(__dirname, '')));
 // Database Connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/nihonnest';
 
-mongoose.connect(MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
+mongoose.connect(MONGODB_URI).then(() => {
     console.log('✅ Connected to MongoDB successfully.');
 }).catch((err) => {
     console.log('⚠️ Failed to connect to MongoDB. Make sure MongoDB is running or MONGODB_URI is set.');
@@ -83,7 +80,7 @@ app.post('/api/softlanding', async (req, res) => {
 });
 
 // Catch-all route to serve index.html for any unknown routes
-app.get('*', (req, res) => {
+app.use((req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
