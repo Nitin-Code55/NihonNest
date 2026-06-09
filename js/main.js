@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            // Toggle hamburger icon between bars and x
+            // Toggle hamburger icon between bars and times
             const icon = hamburger.querySelector('i');
             if (icon) {
                 if (navLinks.classList.contains('active')) {
@@ -18,9 +18,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+        
+        // Close menu when clicking a link
+        const links = navLinks.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
     }
 
-    // Sticky Navbar
+    // Sticky Navbar with Glassmorphism
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -30,10 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Fade-in Animation on Scroll
-    const faders = document.querySelectorAll('.fade-in');
+    // Premium Fade-in & Slide Animations on Scroll
+    const animatedElements = document.querySelectorAll('.animate');
     const appearOptions = {
-        threshold: 0.15,
+        threshold: 0.1,
         rootMargin: "0px 0px -50px 0px"
     };
 
@@ -48,8 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, appearOptions);
 
-    faders.forEach(fader => {
-        appearOnScroll.observe(fader);
+    animatedElements.forEach(el => {
+        appearOnScroll.observe(el);
     });
 
     // Handle all generic forms to show success message
@@ -57,24 +70,32 @@ document.addEventListener('DOMContentLoaded', () => {
     forms.forEach(form => {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            // Store the original button text
             const submitBtn = form.querySelector('button[type="submit"]');
+            if(!submitBtn) return;
             const originalText = submitBtn.innerText;
             
-            // Show success state
             submitBtn.innerText = 'Sent Successfully! ✓';
-            submitBtn.style.backgroundColor = '#25D366';
-            submitBtn.style.borderColor = '#25D366';
+            submitBtn.style.background = 'linear-gradient(135deg, #25D366 0%, #1EBE55 100%)';
+            submitBtn.style.color = 'white';
             
-            // Optionally clear the form
             form.reset();
             
-            // Revert back after 3 seconds
             setTimeout(() => {
                 submitBtn.innerText = originalText;
-                submitBtn.style.backgroundColor = '';
-                submitBtn.style.borderColor = '';
+                submitBtn.style.background = '';
+                submitBtn.style.color = '';
             }, 3000);
+        });
+    });
+
+    // Parallax effect for Hero Orbs
+    document.addEventListener('mousemove', (e) => {
+        const orbs = document.querySelectorAll('.hero-orb');
+        const x = (window.innerWidth - e.pageX * 2) / 90;
+        const y = (window.innerHeight - e.pageY * 2) / 90;
+
+        orbs.forEach(orb => {
+            orb.style.transform = `translateX(${x}px) translateY(${y}px)`;
         });
     });
 });

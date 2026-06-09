@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .hero-softlanding {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 120px 0 80px;
+            padding: 140px 0 80px;
             text-align: center;
+            position: relative;
         }
         .bundle-grid {
             display: grid;
@@ -20,11 +19,15 @@
             margin-top: 3rem;
         }
         .bundle-card {
-            background: white;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
             padding: 2.5rem;
             border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             border-top: 5px solid var(--accent-color);
+            border-left: 1px solid var(--glass-border);
+            border-right: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
         }
         .bundle-card ul {
             list-style: none;
@@ -41,10 +44,13 @@
             color: var(--accent-color);
         }
         .calc-box {
-            background-color: var(--card-bg);
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
             padding: 2rem;
             border-radius: var(--border-radius);
             margin-top: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         .total-price {
             font-size: 2rem;
@@ -66,9 +72,9 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar scrolled">
+    <nav class="navbar glass">
         <div class="container nav-container">
-            <a href="index.html" class="logo">🇯🇵 NihonNest</a>
+            <a href="index.html" class="logo">🇯🇵 NihonNest 🇮🇳</a>
             <div class="hamburger">
                 <i class="fas fa-bars"></i>
             </div>
@@ -84,10 +90,10 @@
     </nav>
 
     <!-- Header -->
-    <header class="hero-softlanding">
+    <header class="hero-softlanding animate slide-up">
         <div class="container">
-            <h1 class="fade-in">Land in Japan. Everything Ready.</h1>
-            <p class="fade-in" style="transition-delay: 0.2s;">Skip the stress of finding guarantors and cooking after a long shift.</p>
+            <h1><span class="text-gradient">Land in Japan.</span> Everything Ready.</h1>
+            <p style="transition-delay: 0.2s; color: var(--text-light); font-size: 1.2rem;">Skip the stress of finding guarantors and cooking after a long shift.</p>
         </div>
     </header>
 
@@ -192,8 +198,8 @@
         <div class="container">
             <div class="footer-content">
                 <div>
-                    <a href="index.html" class="footer-logo">🇯🇵 NihonNest</a>
-                    <p style="margin-bottom: 1rem;">India's first verified Japan Settlement & Placement Platform. Job. Ghar. Khana. Community.</p>
+                    <a href="index.html" class="footer-logo">🇯🇵 NihonNest 🇮🇳</a>
+                    <p style="margin-bottom: 1rem; color: var(--text-light); line-height: 1.8;">India's first verified Japan Settlement & Placement Platform. Job. Ghar. Khana. Community.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>

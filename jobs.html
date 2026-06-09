@@ -8,19 +8,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .jobs-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 120px 0 60px;
+            padding: 140px 0 60px;
             text-align: center;
+            position: relative;
         }
         .filter-bar {
-            background: white;
             padding: 20px;
             border-radius: var(--border-radius);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             display: flex;
             gap: 15px;
-            margin-top: -40px;
+            margin-top: -30px;
             position: relative;
             z-index: 10;
             flex-wrap: wrap;
@@ -51,14 +49,19 @@
             padding: 20px;
         }
         .modal-content {
-            background: white;
-            border-radius: var(--border-radius);
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            border-radius: var(--border-radius-lg);
             padding: 30px;
             width: 100%;
             max-width: 500px;
             position: relative;
             max-height: 90vh;
             overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
         .close-modal {
             position: absolute;
@@ -73,9 +76,9 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar scrolled">
+    <nav class="navbar glass">
         <div class="container nav-container">
-            <a href="index.html" class="logo">🇯🇵 NihonNest</a>
+            <a href="index.html" class="logo">🇯🇵 NihonNest 🇮🇳</a>
             <div class="hamburger">
                 <i class="fas fa-bars"></i>
             </div>
@@ -91,16 +94,16 @@
     </nav>
 
     <!-- Header -->
-    <header class="jobs-header">
+    <header class="jobs-header animate slide-up">
         <div class="container">
-            <h1>Verified Jobs in Japan</h1>
-            <p>Find the right SSW opportunity. No fake promises.</p>
+            <h1>Verified <span class="text-gradient">Jobs in Japan</span></h1>
+            <p style="color: var(--text-light); font-size: 1.2rem;">Find the right SSW opportunity. No fake promises.</p>
         </div>
     </header>
 
     <main class="container" style="padding-bottom: 5rem;">
         <!-- Filters -->
-        <div class="filter-bar fade-in">
+        <div class="filter-bar glass animate slide-up delay-100">
             <div class="filter-group">
                 <select id="filter-city" class="form-control">
                     <option value="">All Cities</option>
@@ -134,13 +137,13 @@
 
     <!-- Apply Modal -->
     <div id="apply-modal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content animate zoom-in">
             <i class="fas fa-times close-modal"></i>
-            <h2 style="margin-bottom: 1.5rem; color: var(--primary-color);">Apply for Job</h2>
+            <h2 style="margin-bottom: 1.5rem;" class="text-gradient-accent">Apply for Job</h2>
             <form id="apply-form">
                 <div class="form-group">
                     <label>Applying for</label>
-                    <input type="text" id="apply-job-title" class="form-control" readonly style="background-color: #eee;">
+                    <input type="text" id="apply-job-title" class="form-control" readonly style="background: rgba(255,255,255,0.02); opacity: 0.7;">
                 </div>
                 <div class="form-group">
                     <label>Full Name</label>
@@ -182,8 +185,8 @@
         <div class="container">
             <div class="footer-content">
                 <div>
-                    <a href="index.html" class="footer-logo">🇯🇵 NihonNest</a>
-                    <p style="margin-bottom: 1rem;">India's first verified Japan Settlement & Placement Platform. Job. Ghar. Khana. Community.</p>
+                    <a href="index.html" class="footer-logo">🇯🇵 NihonNest 🇮🇳</a>
+                    <p style="margin-bottom: 1rem; color: var(--text-light); line-height: 1.8;">India's first verified Japan Settlement & Placement Platform. Job. Ghar. Khana. Community.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>
