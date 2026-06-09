@@ -63,6 +63,10 @@
     </style>
 </head>
 <body>
+    <!-- Global 3D Parallax Background -->
+    <div class="global-parallax">
+        <div class="parallax-layer parallax-bg"></div>
+    </div>
 
     <!-- Navbar -->
     <nav class="navbar glass">
@@ -199,9 +203,12 @@
     </footer>
 
     <!-- WhatsApp Float -->
-    <a href="#" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <div class="whatsapp-float-container">
+        <div class="whatsapp-tooltip">Chat with us</div>
+        <a href="https://wa.me/919999999999?text=Hi,%20I%20want%20to%20go%20Japan%20from%20India%20%F0%9F%87%AE%F0%9F%87%B3" class="whatsapp-float pulse" target="_blank" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
 
     <script src="js/main.js"></script>
     <script>
@@ -247,6 +254,12 @@
                             consultForm.style.opacity = '0.2';
                             successMessage.style.display = 'flex';
                             submitBtn.innerText = originalText;
+                            
+                            const waBtn = successMessage.querySelector('.btn');
+                            if(waBtn) {
+                                const waMsg = encodeURIComponent(`Hi, my name is ${formData.fullName}. I just booked a consultation call.`);
+                                waBtn.href = `https://wa.me/919999999999?text=${waMsg}`;
+                            }
                         } else {
                             submitBtn.innerText = 'Error! Try again.';
                             setTimeout(() => { submitBtn.innerText = originalText; }, 2000);

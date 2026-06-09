@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderJobs(jobs) {
         if (!jobsContainer) return;
         
+        jobsContainer.style.transition = 'opacity 0.3s ease';
         jobsContainer.innerHTML = '';
         
         if (jobs.length === 0) {
@@ -63,7 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
             return matchCity && matchSector;
         });
 
-        renderJobs(filtered);
+        if (jobsContainer) {
+            jobsContainer.style.opacity = '0';
+            setTimeout(() => {
+                renderJobs(filtered);
+                jobsContainer.style.opacity = '1';
+                if(window.initTiltCards) window.initTiltCards();
+            }, 300);
+        } else {
+            renderJobs(filtered);
+            if(window.initTiltCards) window.initTiltCards();
+        }
     }
 
     if (filterCity) filterCity.addEventListener('change', filterJobs);
@@ -126,7 +137,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         btn.innerText = 'Submit Application';
                         btn.style.backgroundColor = '';
                         applyForm.reset();
-                    }, 2000);
+                        
+                        const waMsg = encodeURIComponent(`Hi, my name is ${formData.fullName}. I just applied for the ${formData.jobTitle} position from India 🇮🇳.`);
+                        window.location.href = `https://wa.me/919999999999?text=${waMsg}`;
+                    }, 1500);
                 } else {
                     btn.innerText = 'Error! Try again.';
                     setTimeout(() => { btn.innerText = originalText; }, 2000);

@@ -22,14 +22,15 @@
             flex: 1;
             min-width: 300px;
             height: 400px;
-            background-color: #ddd;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: var(--border-radius);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 5rem;
-            color: #aaa;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            color: var(--text-light);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         .founder-text {
             flex: 1.5;
@@ -40,15 +41,7 @@
             margin: 4rem auto;
         }
         .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: var(--accent-color);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-            border-radius: 2px;
+            display: none; /* Removed background track line */
         }
         .timeline-item {
             padding: 10px 40px;
@@ -56,38 +49,67 @@
             background-color: inherit;
             width: 50%;
         }
+        .timeline-progress {
+            position: absolute;
+            width: 4px;
+            background: var(--gradient-primary);
+            top: 0;
+            left: 50%;
+            margin-left: -2px;
+            height: 0%;
+            border-radius: 2px;
+            z-index: 1;
+            transition: height 0.1s ease-out;
+        }
+        .plane-wrapper {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .timeline-plane {
+            font-size: 2.2rem;
+            color: var(--accent-saffron);
+            transform: rotate(90deg); /* Point straight down */
+            filter: drop-shadow(0 0 10px rgba(255, 153, 51, 0.5));
+        }
+        .waypoint-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--accent-saffron);
+            z-index: 10; /* Above the card */
+            filter: drop-shadow(0 0 5px rgba(255, 153, 51, 0.4));
+        }
+        .timeline-item.left .waypoint-icon {
+            right: 48px; /* Positioned directly ON the card */
+        }
+        .timeline-item.right .waypoint-icon {
+            left: 48px; /* Positioned directly ON the card */
+        }
         .timeline-item.left {
             left: 0;
         }
         .timeline-item.right {
             left: 50%;
         }
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: white;
-            border: 4px solid var(--accent-color);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-        .timeline-item.right::after {
-            left: -10px;
-        }
+
         .timeline-content {
             padding: 20px 30px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
             border: 1px solid var(--glass-border);
             position: relative;
             border-radius: var(--border-radius);
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            color: var(--text-main);
         }
         .timeline-content h3 {
-            color: var(--primary-color);
+            color: var(--accent-saffron);
             margin-bottom: 5px;
         }
         .timeline-content p {
@@ -100,6 +122,11 @@
             }
             .timeline::after {
                 left: 31px;
+                margin-left: 0;
+            }
+            .timeline-progress {
+                left: 31px;
+                margin-left: 0;
             }
             .timeline-item {
                 width: 100%;
@@ -109,8 +136,9 @@
             .timeline-item.right {
                 left: 0;
             }
-            .timeline-item.left::after, .timeline-item.right::after {
-                left: 21px;
+            .timeline-item.left .waypoint-icon, .timeline-item.right .waypoint-icon {
+                left: 78px; /* Positioned directly ON the mobile card */
+                right: auto;
             }
         }
         .contact-grid {
@@ -141,6 +169,10 @@
     </style>
 </head>
 <body>
+    <!-- Global 3D Parallax Background -->
+    <div class="global-parallax">
+        <div class="parallax-layer parallax-bg"></div>
+    </div>
 
     <!-- Navbar -->
     <nav class="navbar glass">
@@ -171,59 +203,73 @@
     <main class="container" style="padding: 4rem 0;">
         
         <!-- Founder Story -->
-        <div class="founder-story fade-in">
+        <div class="card founder-story fade-in" style="padding: 2.5rem; max-width: 950px; margin: 0 auto;">
             <div class="founder-image">
                 <i class="fas fa-user-circle"></i>
                 <!-- Placeholder for Founder Image -->
             </div>
             <div class="founder-text">
-                <h2 style="color: var(--primary-color); margin-bottom: 1rem;">Main khud SSW se Japan gaya.</h2>
-                <p style="color: var(--text-light); margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.8;">
+                <h2 style="margin-bottom: 1.5rem; font-weight: 700; letter-spacing: -0.5px;"><span class="text-gradient">Main khud SSW se Japan gaya.</span></h2>
+                <p style="color: var(--text-main); margin-bottom: 1.5rem; font-size: 1.15rem; line-height: 1.8; font-weight: 300;">
                     "Hi, I'm the founder of NihonNest. I currently work as a truck driver in Japan on an SSW visa. Jab main India se plan kar raha tha, I realized how confusing and scary the process is. Agencies asking for lakhs of rupees, fake job promises, and no one to help with accommodation once you land."
                 </p>
-                <p style="color: var(--text-light); margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.8;">
+                <p style="color: var(--text-main); margin-bottom: 2rem; font-size: 1.15rem; line-height: 1.8; font-weight: 300;">
                     "I went through it all. I studied JLPT N4, applied for jobs, figured out the paperwork, and finally landed here. Par yahan aake bhi struggle tha—apartment lene ke liye guarantor chahiye, aur duty ke baad khana banana mushkil hota tha."
                 </p>
-                <p style="font-weight: 600; color: var(--primary-color); font-size: 1.2rem; border-left: 4px solid var(--accent-color); padding-left: 15px;">
-                    "NihonNest isliye banaya kyunki main chahta hoon ki jo struggle maine dekha, wo kisi aur Indian bhai-behen ko na dekhna pade. We provide verified jobs, a ready-to-move room, and Indian food from Day 1."
-                </p>
+                <div style="border-left: 4px solid var(--accent-saffron); padding-left: 20px; background: rgba(255, 153, 51, 0.05); padding: 20px; border-radius: 0 12px 12px 0;">
+                    <p style="font-weight: 500; color: var(--accent-saffron); font-size: 1.25rem; font-style: italic; margin: 0; line-height: 1.6;">
+                        "NihonNest isliye banaya kyunki main chahta hoon ki jo struggle maine dekha, wo kisi aur Indian bhai-behen ko na dekhna pade. We provide verified jobs, a ready-to-move room, and Indian food from Day 1."
+                    </p>
+                </div>
             </div>
         </div>
 
         <!-- Mission -->
         <div class="section-title fade-in" style="margin-top: 6rem;">
-            <h2>Our Mission</h2>
+            <h2 style="color: var(--text-inverse);">Our Mission</h2>
             <p style="max-width: 800px; margin: 1rem auto 0; color: var(--text-light);">To make Japan the most accessible, safe, and transparent destination for Indian workers by providing end-to-end guidance, verified employment, and a welcoming community.</p>
         </div>
 
         <!-- Timeline -->
-        <h2 style="text-align: center; color: var(--primary-color); margin-top: 4rem;" class="fade-in">The Journey</h2>
+        <h2 style="text-align: center; margin-top: 4rem;" class="fade-in"><span class="text-gradient">The Journey</span></h2>
         <div class="timeline fade-in">
-            <div class="timeline-item left">
+            <!-- Animated Plane Progress Bar -->
+            <div class="timeline-progress" id="mission-progress">
+                <div class="plane-wrapper">
+                    <i class="fas fa-plane timeline-plane"></i>
+                </div>
+            </div>
+            
+            <div class="timeline-item left animate slide-in-left repeat-animate">
+                <i class="fas fa-map-marker-alt waypoint-icon"></i>
                 <div class="timeline-content">
                     <h3>Started as a Student</h3>
                     <p>Began studying Japanese from scratch in India, aiming for a better future.</p>
                 </div>
             </div>
-            <div class="timeline-item right">
+            <div class="timeline-item right animate slide-in-right repeat-animate">
+                <i class="fas fa-map-marker-alt waypoint-icon"></i>
                 <div class="timeline-content">
                     <h3>Cleared JLPT N4</h3>
                     <p>Passed the JLPT N4 and the SSW skill exams for the transport sector.</p>
                 </div>
             </div>
-            <div class="timeline-item left">
+            <div class="timeline-item left animate slide-in-left repeat-animate">
+                <i class="fas fa-map-marker-alt waypoint-icon"></i>
                 <div class="timeline-content">
                     <h3>Applied for SSW Visa</h3>
                     <p>Navigated the complex visa and paperwork process without an expensive agent.</p>
                 </div>
             </div>
-            <div class="timeline-item right">
+            <div class="timeline-item right animate slide-in-right repeat-animate">
+                <i class="fas fa-map-marker-alt waypoint-icon"></i>
                 <div class="timeline-content">
                     <h3>Landed in Japan</h3>
                     <p>Started working as a Truck Driver. Faced initial struggles with housing and food.</p>
                 </div>
             </div>
-            <div class="timeline-item left">
+            <div class="timeline-item left animate slide-in-left repeat-animate">
+                <i class="fas fa-map-marker-alt waypoint-icon"></i>
                 <div class="timeline-content">
                     <h3 style="color: var(--accent-color);">Started NihonNest</h3>
                     <p>Launched this platform to help others settle in Japan smoothly.</p>
@@ -233,27 +279,27 @@
 
         <!-- Contact Section -->
         <div class="section-title fade-in" style="margin-top: 6rem;">
-            <h2>Connect With Us</h2>
+            <h2 style="color: var(--text-inverse);">Connect With Us</h2>
         </div>
         <div class="contact-grid fade-in">
             <a href="#" class="contact-card">
                 <i class="fab fa-whatsapp"></i>
-                <h3 style="color: var(--primary-color); margin-bottom: 5px;">WhatsApp</h3>
+                <h3 style="color: var(--text-inverse); margin-bottom: 5px;">WhatsApp</h3>
                 <p style="color: var(--text-light);">+91 XXXXXXXXXX</p>
             </a>
             <a href="#" class="contact-card">
                 <i class="fas fa-envelope"></i>
-                <h3 style="color: var(--primary-color); margin-bottom: 5px;">Email</h3>
+                <h3 style="color: var(--text-inverse); margin-bottom: 5px;">Email</h3>
                 <p style="color: var(--text-light);">hello@nihonnest.in</p>
             </a>
             <a href="#" class="contact-card">
                 <i class="fab fa-instagram" style="color: #E1306C;"></i>
-                <h3 style="color: var(--primary-color); margin-bottom: 5px;">Instagram</h3>
+                <h3 style="color: var(--text-inverse); margin-bottom: 5px;">Instagram</h3>
                 <p style="color: var(--text-light);">@nihonnest</p>
             </a>
             <a href="#" class="contact-card">
                 <i class="fab fa-youtube" style="color: #FF0000;"></i>
-                <h3 style="color: var(--primary-color); margin-bottom: 5px;">YouTube</h3>
+                <h3 style="color: var(--text-inverse); margin-bottom: 5px;">YouTube</h3>
                 <p style="color: var(--text-light);">NihonNest India</p>
             </a>
         </div>
@@ -300,10 +346,42 @@
     </footer>
 
     <!-- WhatsApp Float -->
-    <a href="#" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <div class="whatsapp-float-container">
+        <div class="whatsapp-tooltip">Chat with us</div>
+        <a href="https://wa.me/919999999999?text=Hi,%20I%20want%20to%20go%20Japan%20from%20India%20%F0%9F%87%AE%F0%9F%87%B3" class="whatsapp-float pulse" target="_blank" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
 
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const timeline = document.querySelector('.timeline');
+            const progress = document.getElementById('mission-progress');
+            
+            if (timeline && progress) {
+                window.addEventListener('scroll', () => {
+                    const rect = timeline.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    
+                    // The airplane starts flying when the top of the timeline is midway down the screen
+                    let startOffset = windowHeight * 0.6; 
+                    
+                    let scrollDistance = startOffset - rect.top;
+                    
+                    // Reach 100% when timeline is almost fully scrolled past
+                    let timelineHeight = rect.height;
+                    let maxScrollDistance = timelineHeight - (windowHeight * 0.2);
+                    
+                    let fillPercentage = (scrollDistance / maxScrollDistance) * 100;
+                    
+                    // Clamp between 0 and 100
+                    fillPercentage = Math.max(0, Math.min(100, fillPercentage));
+                    
+                    progress.style.height = `${fillPercentage}%`;
+                });
+            }
+        });
+    </script>
 </body>
 </html>

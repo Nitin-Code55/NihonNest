@@ -52,11 +52,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const appearOnScroll = new IntersectionObserver(function(entries, observer) {
         entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            } else {
+            if (entry.isIntersecting) {
                 entry.target.classList.add('appear');
-                observer.unobserve(entry.target);
+                if (!entry.target.classList.contains('repeat-animate')) {
+                    observer.unobserve(entry.target);
+                }
+            } else {
+                if (entry.target.classList.contains('repeat-animate')) {
+                    entry.target.classList.remove('appear');
+                }
             }
         });
     }, appearOptions);
@@ -88,14 +92,133 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Parallax effect for Hero Orbs
-    document.addEventListener('mousemove', (e) => {
-        const orbs = document.querySelectorAll('.hero-orb');
-        const x = (window.innerWidth - e.pageX * 2) / 90;
-        const y = (window.innerHeight - e.pageY * 2) / 90;
+    // Global Cinematic 3D Parallax, Hero Orbs & Scroll Progress Bar
+    const parallaxBg = document.querySelector('.parallax-bg');
+    
+    // Inject Scroll Progress Bar if it doesn't exist
+    let progressBar = document.getElementById('scroll-progress');
+    if (!progressBar) {
+        progressBar = document.createElement('div');
+        progressBar.id = 'scroll-progress';
+        document.body.appendChild(progressBar);
+    }
+    
+    let scrollY = window.scrollY;
+    let ticking = false;
+    let mouseX = 0;
+    let mouseY = 0;
 
-        orbs.forEach(orb => {
-            orb.style.transform = `translateX(${x}px) translateY(${y}px)`;
+    function updateParallax() {
+        const maxScroll = Math.max(1, document.body.scrollHeight - window.innerHeight);
+        const scrollProgress = scrollY / maxScroll;
+        
+        if (parallaxBg) {
+            const bgY = scrollProgress * -10; // Smooth vertical pan
+            const scale = 1 + (scrollProgress * 0.05); // Subtle cinematic zoom
+            parallaxBg.style.transform = `translate3d(0, ${bgY}%, 0) scale(${scale})`;
+        }
+        
+        if (progressBar) {
+            progressBar.style.width = `${scrollProgress * 100}%`;
+        }
+        
+        const orbs = document.querySelectorAll('.hero-orb');
+        orbs.forEach((orb, i) => {
+            const scrollSpeed = i === 0 ? -100 : -200;
+            const scrollOffset = scrollProgress * scrollSpeed;
+            orb.style.transform = `translate3d(${mouseX}px, ${mouseY + scrollOffset}px, 0)`;
         });
+        
+        ticking = false;
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = (window.innerWidth - e.pageX * 2) / 90;
+        mouseY = (window.innerHeight - e.pageY * 2) / 90;
+        if (!ticking) {
+            window.requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    });
+
+    window.addEventListener('scroll', () => {
+        scrollY = window.scrollY;
+        if (!ticking) {
+            window.requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    });
+    
+    updateParallax();
+
+    // --- Interactive & Conversion Features --- //
+
+    // 1. Page Transition Animation
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (link.hostname === window.location.hostname && 
+                !link.hash && 
+                link.getAttribute('target') !== '_blank' && 
+                link.href.indexOf('javascript:') === -1) {
+                e.preventDefault();
+                document.body.classList.add('page-exit');
+                setTimeout(() => {
+                    window.location.href = link.href;
+                }, 400); // Wait 0.4s for transition to finish
+            }
+        });
+    });
+
+    // 2. 3D Card Tilt Effect
+    // Apply to statically rendered cards
+    function initTiltCards() {
+        const tiltCards = document.querySelectorAll('.card, .bundle-card, .contact-card, .service-detail .service-icon');
+        tiltCards.forEach(card => {
+            // Avoid adding multiple listeners if re-initialized
+            if(card.dataset.tiltInit) return;
+            card.dataset.tiltInit = 'true';
+
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; // x position within the element
+                const y = e.clientY - rect.top;  // y position within the element
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -10; // Max 10 deg
+                const rotateY = ((x - centerX) / centerX) * 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            });
+        });
+    }
+    initTiltCards();
+    // Expose globally so dynamic elements (like jobs) can initialize it
+    window.initTiltCards = initTiltCards;
+
+    // 3. Simple Frontend Analytics Tracker
+    const trackClick = (eventName) => {
+        try {
+            let events = JSON.parse(localStorage.getItem('nn_analytics') || '[]');
+            events.push({ event: eventName, timestamp: new Date().toISOString() });
+            localStorage.setItem('nn_analytics', JSON.stringify(events));
+            console.log(`[Analytics] Tracked: ${eventName}`);
+        } catch(e) { }
+    };
+
+    document.querySelectorAll('.btn-primary').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const txt = e.target.innerText.trim().replace(/\s+/g, '_').toLowerCase();
+            if(txt) trackClick(`clicked_btn_${txt}`);
+        });
+    });
+    
+    document.querySelectorAll('.whatsapp-float').forEach(btn => {
+        btn.addEventListener('click', () => trackClick('clicked_whatsapp_float'));
     });
 });

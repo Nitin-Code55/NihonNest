@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Global 3D Parallax Background -->
+    <div class="global-parallax">
+        <div class="parallax-layer parallax-bg"></div>
+    </div>
 
     <!-- Navbar -->
     <nav class="navbar glass">
@@ -95,7 +99,7 @@
     </section>
 
     <!-- Why Trust Us -->
-    <section style="background-image: linear-gradient(to bottom, rgba(11,12,16,1), rgba(31,40,51,0.5), rgba(11,12,16,1));">
+    <section>
         <div class="container">
             <div class="section-title animate slide-up">
                 <h2>Why <span class="text-gradient">Trust Us?</span></h2>
@@ -141,30 +145,41 @@
         </div>
     </section>
 
-    <!-- How It Works -->
+    <!-- How It Works (Progress Tracker) -->
     <section>
         <div class="container">
             <div class="section-title animate slide-up">
                 <h2>How It <span class="text-gradient-accent">Works</span></h2>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; text-align: center; position: relative; z-index: 2;">
+            
+            <div class="progress-tracker-container" id="progress-tracker">
+                <div class="progress-line-bg"></div>
+                <div class="progress-line-fill" id="progress-line"></div>
                 
-                <div class="card animate slide-up glass">
-                    <div style="width: 70px; height: 70px; background: var(--gradient-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: bold; margin: 0 auto 1.5rem; box-shadow: 0 5px 15px rgba(237,41,57,0.4);">1</div>
-                    <h3 style="margin-bottom: 1rem;">Apply / Consult</h3>
-                    <p style="color: var(--text-light);">Apply for a job or book a consultation to discuss your plan.</p>
+                <div class="progress-step" data-step="1">
+                    <div class="progress-icon"><i class="fas fa-book-open"></i></div>
+                    <h4>Learn Japanese</h4>
+                    <p>Clear JLPT N4</p>
                 </div>
-                
-                <div class="card animate slide-up delay-100 glass">
-                    <div style="width: 70px; height: 70px; background: var(--gradient-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: bold; margin: 0 auto 1.5rem; box-shadow: 0 5px 15px rgba(237,41,57,0.4);">2</div>
-                    <h3 style="margin-bottom: 1rem;">Match & Paperwork</h3>
-                    <p style="color: var(--text-light);">We match you with verified jobs and handle the SSW visa paperwork.</p>
+                <div class="progress-step" data-step="2">
+                    <div class="progress-icon"><i class="fas fa-briefcase"></i></div>
+                    <h4>Apply Job</h4>
+                    <p>Interview & Get Offer</p>
                 </div>
-                
-                <div class="card animate slide-up delay-200 glass">
-                    <div style="width: 70px; height: 70px; background: var(--gradient-accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: bold; margin: 0 auto 1.5rem; box-shadow: 0 5px 15px rgba(255,76,91,0.4);">3</div>
-                    <h3 style="margin-bottom: 1rem;">Land in Japan</h3>
-                    <p style="color: var(--text-light);">Arrive in Japan with your job, room, and food ready from Day 1.</p>
+                <div class="progress-step" data-step="3">
+                    <div class="progress-icon"><i class="fas fa-file-signature"></i></div>
+                    <h4>Visa Process</h4>
+                    <p>CoE & SSW Visa</p>
+                </div>
+                <div class="progress-step" data-step="4">
+                    <div class="progress-icon"><i class="fas fa-plane"></i></div>
+                    <h4>Travel</h4>
+                    <p>Airport Pickup</p>
+                </div>
+                <div class="progress-step" data-step="5">
+                    <div class="progress-icon"><i class="fas fa-home"></i></div>
+                    <h4>Settle</h4>
+                    <p>Room & Indian Food</p>
                 </div>
             </div>
         </div>
@@ -240,10 +255,46 @@
     </footer>
 
     <!-- WhatsApp Float -->
-    <a href="#" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <div class="whatsapp-float-container">
+        <div class="whatsapp-tooltip">Chat with us</div>
+        <a href="https://wa.me/919999999999?text=Hi,%20I%20want%20to%20go%20Japan%20from%20India%20%F0%9F%87%AE%F0%9F%87%B3" class="whatsapp-float pulse" target="_blank" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
 
     <script src="js/main.js"></script>
+    <script>
+        // Progress Tracker Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const tracker = document.getElementById('progress-tracker');
+            const lineFill = document.getElementById('progress-line');
+            const steps = document.querySelectorAll('.progress-step');
+            
+            if (!tracker) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    let currentStep = 0;
+                    
+                    const interval = setInterval(() => {
+                        if (currentStep < steps.length) {
+                            steps[currentStep].classList.add('active');
+                            // Calculate percentage for line: 
+                            // 5 steps = 0%, 25%, 50%, 75%, 100% (roughly)
+                            const percentage = (currentStep / (steps.length - 1)) * 100;
+                            if(lineFill) lineFill.style.width = percentage + '%';
+                            currentStep++;
+                        } else {
+                            clearInterval(interval);
+                        }
+                    }, 500);
+                    
+                    observer.unobserve(tracker);
+                }
+            }, { threshold: 0.5 });
+
+            observer.observe(tracker);
+        });
+    </script>
 </body>
 </html>
