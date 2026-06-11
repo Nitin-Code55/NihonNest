@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NihonNest | Premium Japan Settlement & Placement</title>
+    <meta name="description" content="India's first verified Japan settlement & placement platform. Find SSW jobs, housing, and community support in Japan without agents.">
+    <meta property="og:title" content="NihonNest | Premium Japan Settlement & Placement">
+    <meta property="og:description" content="India's first verified Japan settlement & placement platform. Find SSW jobs, housing, and community support in Japan without agents.">
+    <meta property="og:image" content="https://nihonnest.in/og-image.jpg">
+    <meta property="og:url" content="https://nihonnest.in/">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -16,17 +22,39 @@
     <!-- Navbar -->
     <nav class="navbar glass">
         <div class="container nav-container">
-            <a href="index.html" class="logo">🇯🇵 NihonNest 🇮🇳</a>
+            <a href="index.html" class="active" class="logo">🇯🇵 NihonNest 🇮🇳</a>
             <div class="hamburger">
                 <i class="fas fa-bars"></i>
             </div>
+            
             <div class="nav-links">
-                <a href="index.html" class="active">Home</a>
+                <a href="index.html" class="active" >Home</a>
                 <a href="jobs.html">Jobs</a>
-                <a href="services.html">Services</a>
-                <a href="softlanding.html">Soft Landing</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Services <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="services.html">All Services</a>
+                        <a href="softlanding.html">Soft Landing</a>
+                        <a href="consult.html">Consultation</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Tools <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="eligibility.html">Eligibility Check</a>
+                        <a href="checklist.html">Visa Checklist</a>
+                        <a href="calculator.html">EMI Calculator</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Resources <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="blog.html">Blog</a>
+                        <a href="resources.html">Study Guides</a>
+                    </div>
+                </div>
                 <a href="about.html">About</a>
-                <a href="consult.html" class="btn btn-primary" style="padding: 8px 16px;">Book Consultation</a>
+                <a href="consult.html" class="btn btn-primary" style="padding: 8px 16px; margin-left: 10px;">Book Call</a>
             </div>
         </div>
     </nav>
@@ -42,7 +70,7 @@
             <p class="animate slide-up delay-100">Verified jobs, affordable accommodation, home food, and a community — all from someone who's actually there.</p>
             <div class="hero-btns animate slide-up delay-200">
                 <a href="jobs.html" class="btn btn-primary">Find Jobs in Japan</a>
-                <a href="consult.html" class="btn btn-outline">Book a Free Consultation</a>
+                <a href="consult.html" class="btn btn-outline">Book a Consultation Call</a>
             </div>
         </div>
     </section>
@@ -215,6 +243,82 @@
         </div>
     </section>
 
+    
+    
+    <!-- Testimonial Carousel -->
+    <section class="container fade-in" style="margin-top: 4rem; margin-bottom: 4rem;">
+        <h2 style="text-align: center; margin-bottom: 2rem; color: var(--text-color);">Success Stories <span class="text-gradient-accent">in Japan</span></h2>
+        
+        <div class="carousel-container">
+            <div class="carousel-track" id="testimonialTrack">
+                <div class="carousel-slide active">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">"NihonNest helped me land a job in Tokyo within 3 months. The entire process from CoE to Visa was handled seamlessly!"</div>
+                        <div class="testimonial-author">- Rahul S., IT Engineer in Tokyo</div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">"The Soft Landing package saved me so much stress. They picked me up from Narita and helped me register my address the next day."</div>
+                        <div class="testimonial-author">- Priya M., Care Worker in Osaka</div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">"Very transparent and professional. No hidden charges. The SSW interview prep materials were top notch."</div>
+                        <div class="testimonial-author">- Amit K., Factory Worker in Nagoya</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-nav" id="carouselNav">
+                <div class="carousel-dot active" onclick="goToSlide(0)"></div>
+                <div class="carousel-dot" onclick="goToSlide(1)"></div>
+                <div class="carousel-dot" onclick="goToSlide(2)"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Refer & Earn Section -->
+    <section class="container fade-in" style="margin-top: 4rem; margin-bottom: 4rem;">
+        <div style="background: linear-gradient(135deg, rgba(255, 77, 79, 0.1) 0%, rgba(15, 23, 42, 0.8) 100%); border: 1px solid var(--primary-color); border-radius: 20px; padding: 3rem; text-align: center; max-width: 800px; margin: 0 auto; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -50px; right: -50px; opacity: 0.1; font-size: 15rem;">🎁</div>
+            <h2 style="margin-bottom: 1rem; color: var(--text-color);">Refer & Earn <span class="text-gradient-accent">₹100</span></h2>
+            <p style="color: var(--text-light); margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.6;">Help your friends move to Japan safely. Share your unique referral link. You earn ₹100 credit for every paid consultation booked through your link!</p>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap;">
+                <input type="text" id="wa-generator" class="form-control" placeholder="Enter your WhatsApp number to generate code" style="max-width: 350px;">
+                <button class="btn btn-primary" onclick="generateRefLink()">Generate My Link</button>
+            </div>
+            
+            <div id="ref-result" style="display: none; margin-top: 1.5rem; background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 8px;">
+                <p style="margin-bottom: 0.5rem; color: var(--primary-color);">Your unique referral link:</p>
+                <input type="text" id="ref-link-output" class="form-control" readonly style="margin-bottom: 1rem; text-align: center;">
+                <button class="btn btn-outline" onclick="copyRefLink()" style="font-size: 0.9rem;"><i class="fas fa-copy"></i> Copy Link</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function generateRefLink() {
+            const wa = document.getElementById('wa-generator').value.trim();
+            if(wa.length < 10) return alert('Please enter a valid 10-digit number.');
+            
+            const code = 'NN-' + wa.substring(0, 6);
+            const link = window.location.origin + window.location.pathname + '?ref=' + code;
+            
+            document.getElementById('ref-result').style.display = 'block';
+            document.getElementById('ref-link-output').value = link;
+        }
+
+        function copyRefLink() {
+            const linkInput = document.getElementById('ref-link-output');
+            navigator.clipboard.writeText(linkInput.value).then(() => {
+                alert('Referral link copied to clipboard!');
+            });
+        }
+    </script>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -229,6 +333,11 @@
                         <li><a href="jobs.html">Find Jobs</a></li>
                         <li><a href="services.html">Our Services</a></li>
                         <li><a href="softlanding.html">Soft Landing Package</a></li>
+                        <li><a href="checklist.html">Checklist</a>
+                <a href="calculator.html">EMI Calculator</a>
+                <a href="resources.html">Resources</a>
+                <a href="eligibility.html">Eligibility Check</a></li>
+                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="about.html">About Us</a></li>
                     </ul>
                 </div>
@@ -236,8 +345,8 @@
                     <h4>Contact</h4>
                     <ul>
                         <li><a href="consult.html">Book Consultation</a></li>
-                        <li><a href="#"><i class="fab fa-whatsapp"></i> +91 XXXXXXXXXX</a></li>
-                        <li><a href="#"><i class="fas fa-envelope"></i> hello@nihonnest.in</a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i> +91 8191092773</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> nitinn1924@gmail.com</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -257,7 +366,7 @@
     <!-- WhatsApp Float -->
     <div class="whatsapp-float-container">
         <div class="whatsapp-tooltip">Chat with us</div>
-        <a href="https://wa.me/919999999999?text=Hi,%20I%20want%20to%20go%20Japan%20from%20India%20%F0%9F%87%AE%F0%9F%87%B3" class="whatsapp-float pulse" target="_blank" aria-label="Chat on WhatsApp">
+        <a href="https://wa.me/918191092773?text=Hi,%20I%20want%20to%20go%20Japan%20from%20India%20%F0%9F%87%AE%F0%9F%87%B3" class="whatsapp-float pulse" target="_blank" aria-label="Chat on WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>

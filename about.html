@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | NihonNest</title>
+    <meta name="description" content="Learn about our founder's journey from India to Japan, and why NihonNest was built to help you navigate the SSW visa system safely.">
+    <meta property="og:title" content="About Us | NihonNest">
+    <meta property="og:description" content="Learn about our founder's journey from India to Japan, and why NihonNest was built to help you navigate the SSW visa system safely.">
+    <meta property="og:image" content="https://nihonnest.in/og-image.jpg">
+    <meta property="og:url" content="https://nihonnest.in/about.html">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -181,13 +187,35 @@
             <div class="hamburger">
                 <i class="fas fa-bars"></i>
             </div>
+            
             <div class="nav-links">
-                <a href="index.html">Home</a>
+                <a href="index.html" >Home</a>
                 <a href="jobs.html">Jobs</a>
-                <a href="services.html">Services</a>
-                <a href="softlanding.html">Soft Landing</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Services <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="services.html">All Services</a>
+                        <a href="softlanding.html">Soft Landing</a>
+                        <a href="consult.html">Consultation</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Tools <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="eligibility.html">Eligibility Check</a>
+                        <a href="checklist.html">Visa Checklist</a>
+                        <a href="calculator.html">EMI Calculator</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Resources <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="blog.html">Blog</a>
+                        <a href="resources.html">Study Guides</a>
+                    </div>
+                </div>
                 <a href="about.html" class="active">About</a>
-                <a href="consult.html" class="btn btn-primary" style="padding: 8px 16px;">Book Consultation</a>
+                <a href="consult.html" class="btn btn-primary" style="padding: 8px 16px; margin-left: 10px;">Book Call</a>
             </div>
         </div>
     </nav>
@@ -281,16 +309,33 @@
         <div class="section-title fade-in" style="margin-top: 6rem;">
             <h2 style="color: var(--text-inverse);">Connect With Us</h2>
         </div>
+        <!-- Location Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 4rem;" class="fade-in">
+            <div class="card" style="background: var(--glass-bg); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); padding: 2rem; text-align: center; border-radius: 20px; position: relative;">
+                <div style="position: absolute; top: 1rem; right: 1rem; color: #ff4d4f; font-size: 1.5rem;"><i class="fas fa-map-marker-alt pulse"></i></div>
+                <h3 style="color: var(--text-inverse); margin-bottom: 1rem;"><i class="fas fa-building"></i> India HQ</h3>
+                <p style="color: var(--text-light); margin-bottom: 1rem; line-height: 1.6;">Level 2, Connaught Place<br>New Delhi, India 110001</p>
+                <a href="https://maps.google.com/?q=Connaught+Place+New+Delhi" target="_blank" class="btn btn-outline" style="font-size: 0.9rem; padding: 8px 16px;"><i class="fas fa-directions"></i> Open in Maps</a>
+            </div>
+            
+            <div class="card" style="background: var(--glass-bg); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); padding: 2rem; text-align: center; border-radius: 20px; position: relative;">
+                <div style="position: absolute; top: 1rem; right: 1rem; color: #ff4d4f; font-size: 1.5rem;"><i class="fas fa-map-marker-alt pulse"></i></div>
+                <h3 style="color: var(--text-inverse); margin-bottom: 1rem;"><i class="fas fa-building"></i> Japan Office</h3>
+                <p style="color: var(--text-light); margin-bottom: 1rem; line-height: 1.6;">Shinjuku Front Tower, 15F<br>Shinjuku City, Tokyo, Japan</p>
+                <a href="https://maps.google.com/?q=Shinjuku+Tokyo" target="_blank" class="btn btn-outline" style="font-size: 0.9rem; padding: 8px 16px;"><i class="fas fa-directions"></i> Open in Maps</a>
+            </div>
+        </div>
+
         <div class="contact-grid fade-in">
-            <a href="#" class="contact-card">
+            <a href="https://wa.me/918191092773" target="_blank" class="contact-card">
                 <i class="fab fa-whatsapp"></i>
                 <h3 style="color: var(--text-inverse); margin-bottom: 5px;">WhatsApp</h3>
-                <p style="color: var(--text-light);">+91 XXXXXXXXXX</p>
+                <p style="color: var(--text-light);">+91 8191092773</p>
             </a>
-            <a href="#" class="contact-card">
+            <a href="mailto:nitinn1924@gmail.com" class="contact-card">
                 <i class="fas fa-envelope"></i>
                 <h3 style="color: var(--text-inverse); margin-bottom: 5px;">Email</h3>
-                <p style="color: var(--text-light);">hello@nihonnest.in</p>
+                <p style="color: var(--text-light);">nitinn1924@gmail.com</p>
             </a>
             <a href="#" class="contact-card">
                 <i class="fab fa-instagram" style="color: #E1306C;"></i>
@@ -320,6 +365,11 @@
                         <li><a href="jobs.html">Find Jobs</a></li>
                         <li><a href="services.html">Our Services</a></li>
                         <li><a href="softlanding.html">Soft Landing Package</a></li>
+                        <li><a href="checklist.html">Checklist</a>
+                <a href="calculator.html">EMI Calculator</a>
+                <a href="resources.html">Resources</a>
+                <a href="eligibility.html">Eligibility Check</a></li>
+                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="about.html">About Us</a></li>
                     </ul>
                 </div>
@@ -327,8 +377,8 @@
                     <h4>Contact</h4>
                     <ul>
                         <li><a href="consult.html">Book Consultation</a></li>
-                        <li><a href="#"><i class="fab fa-whatsapp"></i> +91 XXXXXXXXXX</a></li>
-                        <li><a href="#"><i class="fas fa-envelope"></i> hello@nihonnest.in</a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i> +91 8191092773</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> nitinn1924@gmail.com</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -348,7 +398,7 @@
     <!-- WhatsApp Float -->
     <div class="whatsapp-float-container">
         <div class="whatsapp-tooltip">Chat with us</div>
-        <a href="https://wa.me/919999999999?text=Hi,%20I%20want%20to%20go%20Japan%20from%20India%20%F0%9F%87%AE%F0%9F%87%B3" class="whatsapp-float pulse" target="_blank" aria-label="Chat on WhatsApp">
+        <a href="https://wa.me/918191092773?text=Hi,%20I%20want%20to%20go%20Japan%20from%20India%20%F0%9F%87%AE%F0%9F%87%B3" class="whatsapp-float pulse" target="_blank" aria-label="Chat on WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
@@ -360,25 +410,34 @@
             const progress = document.getElementById('mission-progress');
             
             if (timeline && progress) {
+                let ticking = false;
+
                 window.addEventListener('scroll', () => {
-                    const rect = timeline.getBoundingClientRect();
-                    const windowHeight = window.innerHeight;
-                    
-                    // The airplane starts flying when the top of the timeline is midway down the screen
-                    let startOffset = windowHeight * 0.6; 
-                    
-                    let scrollDistance = startOffset - rect.top;
-                    
-                    // Reach 100% when timeline is almost fully scrolled past
-                    let timelineHeight = rect.height;
-                    let maxScrollDistance = timelineHeight - (windowHeight * 0.2);
-                    
-                    let fillPercentage = (scrollDistance / maxScrollDistance) * 100;
-                    
-                    // Clamp between 0 and 100
-                    fillPercentage = Math.max(0, Math.min(100, fillPercentage));
-                    
-                    progress.style.height = `${fillPercentage}%`;
+                    if (!ticking) {
+                        window.requestAnimationFrame(() => {
+                            const rect = timeline.getBoundingClientRect();
+                            const windowHeight = window.innerHeight;
+                            
+                            // The airplane starts flying when the top of the timeline is midway down the screen
+                            let startOffset = windowHeight * 0.6; 
+                            
+                            let scrollDistance = startOffset - rect.top;
+                            
+                            // Reach 100% when timeline is almost fully scrolled past
+                            let timelineHeight = rect.height;
+                            let maxScrollDistance = timelineHeight - (windowHeight * 0.2);
+                            
+                            let fillPercentage = (scrollDistance / maxScrollDistance) * 100;
+                            
+                            // Clamp between 0 and 100
+                            fillPercentage = Math.max(0, Math.min(100, fillPercentage));
+                            
+                            progress.style.height = `${fillPercentage}%`;
+                            
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
                 });
             }
         });

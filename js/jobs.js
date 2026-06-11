@@ -108,15 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const btn = applyForm.querySelector('button[type="submit"]');
             
-            // Gather form data
-            const formData = {
-                jobTitle: document.getElementById('apply-job-title').value,
-                fullName: applyForm.querySelector('input[type="text"]:nth-of-type(1)').value,
-                email: applyForm.querySelector('input[type="email"]').value,
-                phone: applyForm.querySelector('input[type="tel"]').value,
-                jlptLevel: applyForm.querySelector('select').value,
-                currentCity: applyForm.querySelectorAll('input[type="text"]')[1].value
-            };
+            // Gather form data safely by name
+            const formData = Object.fromEntries(new FormData(applyForm).entries());
 
             const originalText = btn.innerText;
             btn.innerText = 'Sending...';
@@ -139,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         applyForm.reset();
                         
                         const waMsg = encodeURIComponent(`Hi, my name is ${formData.fullName}. I just applied for the ${formData.jobTitle} position from India 🇮🇳.`);
-                        window.location.href = `https://wa.me/919999999999?text=${waMsg}`;
+                        window.location.href = `https://wa.me/918191092773?text=${waMsg}`;
                     }, 1500);
                 } else {
                     btn.innerText = 'Error! Try again.';

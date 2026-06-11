@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Resources | NihonNest</title>
+    <meta name="description" content="Japan SSW Visa guides, salary breakdowns, language tips, and life in Japan resources for Indians.">
+    <meta property="og:title" content="Blog & Resources | NihonNest">
+    <meta property="og:description" content="Japan SSW Visa guides, salary breakdowns, language tips, and life in Japan resources for Indians.">
+    <meta property="og:url" content="https://nihonnest.in/blog.html">
+    <meta property="og:image" content="https://nihonnest.in/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .blog-header { text-align: center; padding: 120px 20px 40px; }
+        .filter-tabs { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+        .filter-btn { padding: 8px 16px; border: 1px solid var(--glass-border); background: var(--glass-bg); color: var(--text-light); border-radius: 20px; cursor: pointer; transition: 0.3s; }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+        .blog-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; transition: transform 0.3s ease, border-color 0.3s ease; }
+        .blog-card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
+        .blog-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .blog-category { font-size: 0.8rem; color: var(--primary-color); font-weight: bold; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 1px; }
+        .blog-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.4; color: var(--text-color); }
+        .blog-meta { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; display: flex; gap: 1rem; }
+        .blog-excerpt { color: var(--text-light); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
+        .read-more { font-weight: bold; color: var(--accent-color); text-decoration: none; align-self: flex-start; display: flex; align-items: center; gap: 5px; }
+        .read-more:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="global-parallax">
+        <div class="parallax-layer parallax-bg"></div>
+    </div>
+    
+    <nav class="navbar glass">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">🇯🇵 NihonNest 🇮🇳</a>
+            <div class="hamburger"><i class="fas fa-bars"></i></div>
+            
+            <div class="nav-links">
+                <a href="index.html" >Home</a>
+                <a href="jobs.html">Jobs</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Services <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="services.html">All Services</a>
+                        <a href="softlanding.html">Soft Landing</a>
+                        <a href="consult.html">Consultation</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Tools <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="eligibility.html">Eligibility Check</a>
+                        <a href="checklist.html">Visa Checklist</a>
+                        <a href="calculator.html">EMI Calculator</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Resources <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="blog.html" class="active">Blog</a>
+                        <a href="resources.html">Study Guides</a>
+                    </div>
+                </div>
+                <a href="about.html">About</a>
+                <a href="consult.html" class="btn btn-primary" style="padding: 8px 16px; margin-left: 10px;">Book Call</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="blog-header fade-in">
+        <div class="container">
+            <h1 class="text-gradient">Japan SSW Resources & Guides</h1>
+            <p style="color: var(--text-light); font-size: 1.1rem; max-width: 600px; margin: 1rem auto;">Everything you need to know about working and living in Japan as an Indian SSW.</p>
+        </div>
+    </header>
+
+    <main class="container fade-in" style="margin-bottom: 4rem;">
+        <div class="filter-tabs" id="filterTabs">
+            <button class="filter-btn active" data-filter="All">All</button>
+            <button class="filter-btn" data-filter="Visa">Visa</button>
+            <button class="filter-btn" data-filter="Language">Language</button>
+            <button class="filter-btn" data-filter="Jobs">Jobs</button>
+            <button class="filter-btn" data-filter="Life in Japan">Life in Japan</button>
+        </div>
+
+        <div class="blog-grid" id="blogGrid">
+            <!-- Blogs rendered via JS -->
+            <p style="text-align: center; grid-column: 1/-1;">Loading blogs...</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="index.html" class="footer-logo">🇯🇵 NihonNest 🇮🇳</a>
+                    <p style="margin-bottom: 1rem; color: var(--text-light); line-height: 1.8;">India's first verified Japan Settlement & Placement Platform.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NihonNest.in. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const blogGrid = document.getElementById('blogGrid');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            let blogs = [];
+
+            try {
+                const response = await fetch('data/blogs.json');
+                blogs = await response.json();
+                renderBlogs('All');
+            } catch (err) {
+                blogGrid.innerHTML = '<p style="text-align:center; grid-column:1/-1;">Failed to load resources.</p>';
+            }
+
+            function renderBlogs(filter) {
+                blogGrid.innerHTML = '';
+                const filtered = filter === 'All' ? blogs : blogs.filter(b => b.category === filter);
+                
+                if (filtered.length === 0) {
+                    blogGrid.innerHTML = '<p style="text-align:center; grid-column:1/-1;">No posts found for this category.</p>';
+                    return;
+                }
+
+                filtered.forEach(blog => {
+                    const card = document.createElement('div');
+                    card.className = 'blog-card';
+                    card.innerHTML = \`
+                        <div class="blog-icon">\${blog.icon}</div>
+                        <div class="blog-category">\${blog.category}</div>
+                        <h2 class="blog-title">\${blog.title}</h2>
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> \${blog.date}</span>
+                            <span><i class="far fa-clock"></i> \${blog.readTime}</span>
+                        </div>
+                        <p class="blog-excerpt">\${blog.excerpt}</p>
+                        <a href="blog-post.html?id=\${blog.id}" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    \`;
+                    blogGrid.appendChild(card);
+                });
+            }
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderBlogs(btn.getAttribute('data-filter'));
+                });
+            });
+        });
+    </script>
+</body>
+</html>

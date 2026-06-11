@@ -1,7 +1,50 @@
 [
-  { "id": 1, "title": "Truck Driver", "company": "Verified Logistics Co.", "city": "Tokyo", "salary": "220000", "language": "N4", "housing": true, "sector": "Transport" },
-  { "id": 2, "title": "Warehouse Staff", "company": "Anonymous", "city": "Osaka", "salary": "185000", "language": "N5", "housing": true, "sector": "Warehouse" },
-  { "id": 3, "title": "Factory Worker", "company": "Auto Parts Manufacturer", "city": "Nagoya", "salary": "195000", "language": "None", "housing": true, "sector": "Factory" },
-  { "id": 4, "title": "Care Worker", "company": "Verified Care Home", "city": "Fukuoka", "salary": "200000", "language": "N4", "housing": false, "sector": "Care" },
-  { "id": 5, "title": "Kitchen Staff", "company": "Indian Restaurant Group", "city": "Tokyo", "salary": "175000", "language": "N5", "housing": false, "sector": "F&B" }
+  {
+    "id": 1,
+    "title": "Delivery Truck Driver",
+    "company": "Yamato Transport Co.",
+    "city": "Tokyo",
+    "sector": "Transport",
+    "salary": "250000",
+    "language": "N4",
+    "housing": true,
+    "description": "Drive light/medium delivery trucks in the Tokyo metropolitan area. Fixed routes. SSW Type 1 visa sponsorship available.",
+    "postedDate": "2026-06-01"
+  },
+  {
+    "id": 2,
+    "title": "Warehouse Logistics Staff",
+    "company": "Sagawa Express",
+    "city": "Osaka",
+    "sector": "Logistics",
+    "salary": "210000",
+    "language": "N4",
+    "housing": true,
+    "description": "Sorting, packing, and forklift operation in a large distribution center. Shift work required.",
+    "postedDate": "2026-06-05"
+  },
+  {
+    "id": 3,
+    "title": "Food Processing Worker",
+    "company": "Nippon Ham Foods",
+    "city": "Hokkaido",
+    "sector": "Manufacturing",
+    "salary": "195000",
+    "language": "N4",
+    "housing": true,
+    "description": "Work in a clean-room environment preparing and packaging meat products. Subsidized company housing provided.",
+    "postedDate": "2026-06-08"
+  },
+  {
+    "id": 4,
+    "title": "Industrial Machinery Operator",
+    "company": "Toyota Auto Body",
+    "city": "Aichi",
+    "sector": "Manufacturing",
+    "salary": "265000",
+    "language": "N3",
+    "housing": false,
+    "description": "Operating CNC machines and pressing equipment for auto parts. Previous experience preferred.",
+    "postedDate": "2026-06-09"
+  }
 ]

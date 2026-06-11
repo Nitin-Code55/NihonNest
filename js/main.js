@@ -1,4 +1,100 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Enhanced WhatsApp Float
+    const waTooltip = document.querySelector('.whatsapp-tooltip');
+    const waFloat = document.querySelector('.whatsapp-float');
+    if (waTooltip && waFloat) {
+        // Show tooltip after 3 seconds
+        setTimeout(() => {
+            waTooltip.style.opacity = '1';
+            waTooltip.style.transform = 'translateY(-50%) translateX(0)';
+            waTooltip.innerText = 'Need help with Japan Visa? Chat with us!';
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+                waTooltip.style.opacity = '0';
+                waTooltip.style.transform = 'translateY(-50%) translateX(-10px)';
+            }, 5000);
+        }, 3000);
+
+        // Pulse heavily when reaching the bottom of the page
+        window.addEventListener('scroll', () => {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 500) {
+                waFloat.classList.add('heavy-pulse');
+            } else {
+                waFloat.classList.remove('heavy-pulse');
+            }
+        });
+    }
+
+
+    // Testimonial Carousel
+    const track = document.getElementById('testimonialTrack');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    
+    if (track && slides.length > 0) {
+        let currentIndex = 0;
+        let carouselInterval;
+
+        window.goToSlide = function(index) {
+            currentIndex = index;
+            const offset = -currentIndex * 100;
+            track.style.transform = `translateX(${offset}%)`;
+            
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            
+            slides[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+            
+            resetInterval();
+        };
+
+        function nextSlide() {
+            let next = currentIndex + 1;
+            if (next >= slides.length) next = 0;
+            goToSlide(next);
+        }
+
+        function resetInterval() {
+            clearInterval(carouselInterval);
+            carouselInterval = setInterval(nextSlide, 5000);
+        }
+
+        resetInterval(); // Start auto-rotate
+    }
+
+
+    // Smooth Page Transitions
+    document.querySelectorAll('a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            const target = this.getAttribute('target');
+            
+            // Ignore if it's an anchor link, empty link, external blank target, or javascript
+            if (!href || href.startsWith('#') || href.startsWith('javascript') || target === '_blank') return;
+            
+            // Allow default behavior for external links, but intercept internal HTML navigation
+            if (href.endsWith('.html') || href === '/') {
+                e.preventDefault();
+                document.body.classList.add('page-transition-exit');
+                
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 400); // Wait for CSS transition
+            }
+        });
+    });
+
+
+    // Referral Tracking
+    const urlParams = new URLSearchParams(window.location.search);
+    const refCode = urlParams.get('ref');
+    if (refCode) {
+        localStorage.setItem('nn_referral_code', refCode);
+    }
+
     // Mobile Menu Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -69,28 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
         appearOnScroll.observe(el);
     });
 
-    // Handle all generic forms to show success message
-    const forms = document.querySelectorAll('form:not(#calculator-form)');
-    forms.forEach(form => {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const submitBtn = form.querySelector('button[type="submit"]');
-            if(!submitBtn) return;
-            const originalText = submitBtn.innerText;
-            
-            submitBtn.innerText = 'Sent Successfully! ✓';
-            submitBtn.style.background = 'linear-gradient(135deg, #25D366 0%, #1EBE55 100%)';
-            submitBtn.style.color = 'white';
-            
-            form.reset();
-            
-            setTimeout(() => {
-                submitBtn.innerText = originalText;
-                submitBtn.style.background = '';
-                submitBtn.style.color = '';
-            }, 3000);
-        });
-    });
 
     // Global Cinematic 3D Parallax, Hero Orbs & Scroll Progress Bar
     const parallaxBg = document.querySelector('.parallax-bg');

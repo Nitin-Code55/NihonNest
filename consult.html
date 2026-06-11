@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Consultation | NihonNest</title>
+    <meta name="description" content="Book a 1-on-1 consultation with NihonNest to start your SSW journey to Japan. Get honest, transparent guidance.">
+    <meta property="og:title" content="Book Consultation | NihonNest">
+    <meta property="og:description" content="Book a 1-on-1 consultation with NihonNest to start your SSW journey to Japan. Get honest, transparent guidance.">
+    <meta property="og:image" content="https://nihonnest.in/og-image.jpg">
+    <meta property="og:url" content="https://nihonnest.in/consult.html">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -75,13 +81,35 @@
             <div class="hamburger">
                 <i class="fas fa-bars"></i>
             </div>
+            
             <div class="nav-links">
-                <a href="index.html">Home</a>
+                <a href="index.html" >Home</a>
                 <a href="jobs.html">Jobs</a>
-                <a href="services.html">Services</a>
-                <a href="softlanding.html">Soft Landing</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Services <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="services.html">All Services</a>
+                        <a href="softlanding.html">Soft Landing</a>
+                        <a href="consult.html" class="active">Consultation</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Tools <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="eligibility.html">Eligibility Check</a>
+                        <a href="checklist.html">Visa Checklist</a>
+                        <a href="calculator.html">EMI Calculator</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Resources <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="blog.html">Blog</a>
+                        <a href="resources.html">Study Guides</a>
+                    </div>
+                </div>
                 <a href="about.html">About</a>
-                <a href="consult.html" class="active btn btn-primary" style="padding: 8px 16px;">Book Consultation</a>
+                <a href="consult.html" class="active" class="btn btn-primary" style="padding: 8px 16px; margin-left: 10px;">Book Call</a>
             </div>
         </div>
     </nav>
@@ -99,7 +127,7 @@
         <div class="consult-container fade-in">
             
             <div class="payment-note">
-                <p><strong>Note:</strong> A consultation fee of <strong>₹500</strong> is required to confirm the booking. You can pay via UPI after submitting this form. Our team will contact you on WhatsApp with payment details.</p>
+                <p><strong>Note:</strong> A consultation fee of <strong>₹500</strong> is required to confirm the booking. You will be redirected to a secure payment gateway upon submitting this form.</p>
             </div>
 
             <form id="consult-form">
@@ -107,22 +135,33 @@
                     
                     <div class="form-group">
                         <label>Full Name</label>
-                        <input type="text" class="form-control" required placeholder="Enter your full name">
+                        <input type="text" name="fullName" class="form-control" required placeholder="Enter your full name">
                     </div>
                     
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input type="email" class="form-control" required placeholder="you@example.com">
+                        <input type="email" name="email" class="form-control" required placeholder="you@example.com">
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group" id="wa-group">
                         <label>WhatsApp Number</label>
-                        <input type="tel" class="form-control" required placeholder="+91 xxxxxxxxxx">
+                        <div style="display: flex; gap: 0.5rem;">
+                            <input type="tel" name="whatsapp" id="wa-input" class="form-control" required placeholder="8191092773" style="flex: 1;">
+                            <button type="button" class="btn btn-outline" id="sendOtpBtn" style="padding: 10px 15px;">Send OTP</button>
+                        </div>
+                        <div id="otp-section" style="display: none; margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                            <label style="font-size: 0.9rem; margin-bottom: 0.5rem; display: block;">Enter 6-Digit OTP</label>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <input type="text" id="otp-input" class="form-control" placeholder="123456" style="flex: 1;" maxlength="6">
+                                <button type="button" class="btn btn-primary" id="verifyOtpBtn" style="padding: 10px 15px;">Verify</button>
+                            </div>
+                        </div>
+                        <div id="otp-status" style="margin-top: 0.5rem; font-size: 0.9rem;"></div>
                     </div>
 
                     <div class="form-group">
                         <label>Current Situation</label>
-                        <select class="form-control" required>
+                        <select name="situation" class="form-control" required>
                             <option value="" disabled selected>Select an option</option>
                             <option value="planning">Still in India planning</option>
                             <option value="applied">Already applied for SSW</option>
@@ -134,26 +173,26 @@
                     <div class="form-group" style="grid-column: 1 / -1;">
                         <label>Preferred Time Slot</label>
                         <div style="display: flex; gap: 1rem;">
-                            <input type="date" class="form-control" required style="flex: 1;">
-                            <input type="time" class="form-control" required style="flex: 1;">
+                            <input type="date" name="preferredDate" class="form-control" required style="flex: 1;">
+                            <input type="time" name="preferredTime" class="form-control" required style="flex: 1;">
                         </div>
                     </div>
 
                     <div class="form-group" style="grid-column: 1 / -1;">
                         <label>Your Question / What do you need help with?</label>
-                        <textarea class="form-control" required placeholder="Please provide some details so we can prepare for the call..."></textarea>
+                        <textarea name="question" class="form-control" required placeholder="Please provide some details so we can prepare for the call..."></textarea>
                     </div>
 
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; padding: 15px; font-size: 1.1rem;">Submit & Proceed to Pay</button>
+                <button type="submit" id="mainSubmitBtn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; padding: 15px; font-size: 1.1rem;" disabled>Verify OTP to Submit</button>
             </form>
 
             <!-- Success Overlay -->
             <div id="success-message" class="success-overlay">
                 <i class="fas fa-check-circle"></i>
                 <h2 style="color: var(--primary-color); margin-bottom: 1rem;">Request Received!</h2>
-                <p style="color: var(--text-light); margin-bottom: 2rem; max-width: 400px;">Your consultation request has been successfully submitted. Please click below to connect with us on WhatsApp and complete your ₹500 payment.</p>
+                <p style="color: var(--text-light); margin-bottom: 2rem; max-width: 400px;">Payment successful! Your consultation request has been submitted. Please click below to connect with us on WhatsApp to schedule your call.</p>
                 <a href="#" class="btn btn-primary" style="background-color: #25D366; border-color: #25D366; display: flex; align-items: center; gap: 10px;">
                     <i class="fab fa-whatsapp" style="color: white; font-size: 1.2rem; margin: 0;"></i> Pay & Confirm via WhatsApp
                 </a>
@@ -177,6 +216,11 @@
                         <li><a href="jobs.html">Find Jobs</a></li>
                         <li><a href="services.html">Our Services</a></li>
                         <li><a href="softlanding.html">Soft Landing Package</a></li>
+                        <li><a href="checklist.html">Checklist</a>
+                <a href="calculator.html">EMI Calculator</a>
+                <a href="resources.html">Resources</a>
+                <a href="eligibility.html">Eligibility Check</a></li>
+                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="about.html">About Us</a></li>
                     </ul>
                 </div>
@@ -184,8 +228,8 @@
                     <h4>Contact</h4>
                     <ul>
                         <li><a href="consult.html">Book Consultation</a></li>
-                        <li><a href="#"><i class="fab fa-whatsapp"></i> +91 XXXXXXXXXX</a></li>
-                        <li><a href="#"><i class="fas fa-envelope"></i> hello@nihonnest.in</a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i> +91 8191092773</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> nitinn1924@gmail.com</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -205,7 +249,7 @@
     <!-- WhatsApp Float -->
     <div class="whatsapp-float-container">
         <div class="whatsapp-tooltip">Chat with us</div>
-        <a href="https://wa.me/919999999999?text=Hi,%20I%20want%20to%20go%20Japan%20from%20India%20%F0%9F%87%AE%F0%9F%87%B3" class="whatsapp-float pulse" target="_blank" aria-label="Chat on WhatsApp">
+        <a href="https://wa.me/918191092773?text=Hi,%20I%20want%20to%20go%20Japan%20from%20India%20%F0%9F%87%AE%F0%9F%87%B3" class="whatsapp-float pulse" target="_blank" aria-label="Chat on WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
@@ -232,16 +276,8 @@
                     submitBtn.innerText = 'Processing...';
 
                     // Gather data
-                    const inputs = consultForm.querySelectorAll('.form-control');
-                    const formData = {
-                        fullName: inputs[0].value,
-                        email: inputs[1].value,
-                        whatsapp: inputs[2].value,
-                        situation: inputs[3].value,
-                        preferredDate: inputs[4].value,
-                        preferredTime: inputs[5].value,
-                        question: inputs[6].value
-                    };
+                    // Gather data safely by name
+                    const formData = Object.fromEntries(new FormData(consultForm).entries());
 
                     try {
                         const response = await fetch('/api/consultations', {
@@ -250,18 +286,65 @@
                             body: JSON.stringify(formData)
                         });
 
+                        const data = await response.json();
                         if (response.ok) {
-                            consultForm.style.opacity = '0.2';
-                            successMessage.style.display = 'flex';
-                            submitBtn.innerText = originalText;
+                            // Init Razorpay Checkout
+                            const orderRes = await fetch('/api/create-order', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ consultationId: data.consultationId })
+                            });
+                            const orderData = await orderRes.json();
                             
-                            const waBtn = successMessage.querySelector('.btn');
-                            if(waBtn) {
-                                const waMsg = encodeURIComponent(`Hi, my name is ${formData.fullName}. I just booked a consultation call.`);
-                                waBtn.href = `https://wa.me/919999999999?text=${waMsg}`;
+                            if(orderData.order_id) {
+                                const options = {
+                                    "key": orderData.key_id || 'YOUR_KEY_ID',
+                                    "amount": "50000",
+                                    "currency": "INR",
+                                    "name": "NihonNest",
+                                    "description": "Consultation Booking Fee",
+                                    "order_id": orderData.order_id,
+                                    "handler": async function (rzpRes) {
+                                        await fetch('/api/verify-payment', {
+                                            method: 'POST',
+                                            headers: { 'Content-Type': 'application/json' },
+                                            body: JSON.stringify({
+                                                consultationId: data.consultationId,
+                                                paymentId: rzpRes.razorpay_payment_id,
+                                                orderId: rzpRes.razorpay_order_id,
+                                                signature: rzpRes.razorpay_signature
+                                            })
+                                        });
+                                        
+                                        consultForm.style.opacity = '0.2';
+                                        successMessage.style.display = 'flex';
+                                        submitBtn.innerText = originalText;
+                                        
+                                        const waBtn = successMessage.querySelector('.btn');
+                                        if(waBtn) {
+                                            const waMsg = encodeURIComponent(`Hi, my name is ${formData.fullName}. I just booked and paid for a consultation call.`);
+                                            waBtn.href = `https://wa.me/918191092773?text=${waMsg}`;
+                                        }
+                                    },
+                                    "prefill": {
+                                        "name": formData.fullName,
+                                        "email": formData.email,
+                                        "contact": formData.whatsapp
+                                    },
+                                    "theme": { "color": "#ff4d4f" }
+                                };
+                                const rzp = new Razorpay(options);
+                                rzp.on('payment.failed', function (resp){
+                                    alert("Payment failed. Please try again.");
+                                    submitBtn.innerText = originalText;
+                                });
+                                rzp.open();
+                            } else {
+                                alert("Could not initialize payment.");
+                                submitBtn.innerText = originalText;
                             }
                         } else {
-                            submitBtn.innerText = 'Error! Try again.';
+                            submitBtn.innerText = data.error || 'Error! Try again.';
                             setTimeout(() => { submitBtn.innerText = originalText; }, 2000);
                         }
                     } catch (err) {
@@ -271,6 +354,87 @@
                     }
                 });
             }
+        });
+    </script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script>
+        let isPhoneVerified = false;
+        const sendOtpBtn = document.getElementById('sendOtpBtn');
+        const verifyOtpBtn = document.getElementById('verifyOtpBtn');
+        const waInput = document.getElementById('wa-input');
+        const otpSection = document.getElementById('otp-section');
+        const otpInput = document.getElementById('otp-input');
+        const otpStatus = document.getElementById('otp-status');
+        const mainSubmitBtn = document.getElementById('mainSubmitBtn');
+
+        sendOtpBtn.addEventListener('click', async () => {
+            const phone = waInput.value.trim();
+            if (!phone) return alert('Please enter your WhatsApp number first.');
+
+            sendOtpBtn.disabled = true;
+            sendOtpBtn.innerText = 'Sending...';
+
+            try {
+                const res = await fetch('/api/send-otp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone })
+                });
+
+                if (res.ok) {
+                    otpSection.style.display = 'block';
+                    otpStatus.innerText = 'OTP sent! Please check your messages.';
+                    otpStatus.style.color = '#4ade80';
+                    sendOtpBtn.innerText = 'Resend OTP';
+                } else {
+                    otpStatus.innerText = 'Failed to send OTP.';
+                    otpStatus.style.color = '#ff4d4f';
+                    sendOtpBtn.innerText = 'Send OTP';
+                }
+            } catch(e) {
+                otpStatus.innerText = 'Network error.';
+                otpStatus.style.color = '#ff4d4f';
+                sendOtpBtn.innerText = 'Send OTP';
+            }
+            sendOtpBtn.disabled = false;
+        });
+
+        verifyOtpBtn.addEventListener('click', async () => {
+            const phone = waInput.value.trim();
+            const otp = otpInput.value.trim();
+            if (!otp) return alert('Please enter OTP.');
+
+            verifyOtpBtn.disabled = true;
+            verifyOtpBtn.innerText = 'Verifying...';
+
+            try {
+                const res = await fetch('/api/verify-otp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone, otp })
+                });
+
+                if (res.ok) {
+                    isPhoneVerified = true;
+                    otpStatus.innerHTML = '<i class="fas fa-check-circle"></i> Number verified!';
+                    otpStatus.style.color = '#4ade80';
+                    otpSection.style.display = 'none';
+                    waInput.readOnly = true;
+                    sendOtpBtn.style.display = 'none';
+                    mainSubmitBtn.disabled = false;
+                    mainSubmitBtn.innerText = 'Submit & Proceed to Pay';
+                } else {
+                    const data = await res.json();
+                    otpStatus.innerText = data.error || 'Invalid OTP.';
+                    otpStatus.style.color = '#ff4d4f';
+                }
+            } catch(e) {
+                otpStatus.innerText = 'Network error.';
+                otpStatus.style.color = '#ff4d4f';
+            }
+            verifyOtpBtn.innerText = 'Verify';
+            verifyOtpBtn.disabled = false;
         });
     </script>
 </body>

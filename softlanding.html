@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soft Landing Package | NihonNest</title>
+    <meta name="description" content="NihonNest's Soft Landing Package provides affordable housing and Indian meals in Japan from Day 1. Settle in smoothly with zero stress.">
+    <meta property="og:title" content="Soft Landing Package | NihonNest">
+    <meta property="og:description" content="NihonNest's Soft Landing Package provides affordable housing and Indian meals in Japan from Day 1. Settle in smoothly with zero stress.">
+    <meta property="og:image" content="https://nihonnest.in/og-image.jpg">
+    <meta property="og:url" content="https://nihonnest.in/softlanding.html">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -91,13 +97,35 @@
             <div class="hamburger">
                 <i class="fas fa-bars"></i>
             </div>
+            
             <div class="nav-links">
-                <a href="index.html">Home</a>
+                <a href="index.html" >Home</a>
                 <a href="jobs.html">Jobs</a>
-                <a href="services.html">Services</a>
-                <a href="softlanding.html" class="active">Soft Landing</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Services <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="services.html">All Services</a>
+                        <a href="softlanding.html" class="active">Soft Landing</a>
+                        <a href="consult.html">Consultation</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Tools <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="eligibility.html">Eligibility Check</a>
+                        <a href="checklist.html">Visa Checklist</a>
+                        <a href="calculator.html">EMI Calculator</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Resources <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="blog.html">Blog</a>
+                        <a href="resources.html">Study Guides</a>
+                    </div>
+                </div>
                 <a href="about.html">About</a>
-                <a href="consult.html" class="btn btn-primary" style="padding: 8px 16px;">Book Consultation</a>
+                <a href="consult.html" class="btn btn-primary" style="padding: 8px 16px; margin-left: 10px;">Book Call</a>
             </div>
         </div>
     </nav>
@@ -228,6 +256,11 @@
                         <li><a href="jobs.html">Find Jobs</a></li>
                         <li><a href="services.html">Our Services</a></li>
                         <li><a href="softlanding.html">Soft Landing Package</a></li>
+                        <li><a href="checklist.html">Checklist</a>
+                <a href="calculator.html">EMI Calculator</a>
+                <a href="resources.html">Resources</a>
+                <a href="eligibility.html">Eligibility Check</a></li>
+                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="about.html">About Us</a></li>
                     </ul>
                 </div>
@@ -235,8 +268,8 @@
                     <h4>Contact</h4>
                     <ul>
                         <li><a href="consult.html">Book Consultation</a></li>
-                        <li><a href="#"><i class="fab fa-whatsapp"></i> +91 XXXXXXXXXX</a></li>
-                        <li><a href="#"><i class="fas fa-envelope"></i> hello@nihonnest.in</a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i> +91 8191092773</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> nitinn1924@gmail.com</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -332,7 +365,7 @@
                                 calculateTotal(); // reset prices
                                 
                                 const waMsg = encodeURIComponent(`Hi, my name is ${formData.fullName}. I just booked a Soft Landing package for ${formData.durationMonths} months from India 🇮🇳.`);
-                                window.location.href = `https://wa.me/919999999999?text=${waMsg}`;
+                                window.location.href = `https://wa.me/918191092773?text=${waMsg}`;
                             }, 1500);
                         } else {
                             btn.innerText = 'Error! Try again.';

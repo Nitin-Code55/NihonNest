@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jobs in Japan | NihonNest</title>
+    <title>Find Jobs in Japan | NihonNest</title>
+    <meta name="description" content="Browse verified SSW job listings in Japan for Indian candidates. Apply directly through NihonNest with zero hidden fees.">
+    <meta property="og:title" content="Find Jobs in Japan | NihonNest">
+    <meta property="og:description" content="Browse verified SSW job listings in Japan for Indian candidates. Apply directly through NihonNest with zero hidden fees.">
+    <meta property="og:image" content="https://nihonnest.in/og-image.jpg">
+    <meta property="og:url" content="https://nihonnest.in/jobs.html">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -86,13 +92,35 @@
             <div class="hamburger">
                 <i class="fas fa-bars"></i>
             </div>
+            
             <div class="nav-links">
-                <a href="index.html">Home</a>
+                <a href="index.html" >Home</a>
                 <a href="jobs.html" class="active">Jobs</a>
-                <a href="services.html">Services</a>
-                <a href="softlanding.html">Soft Landing</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Services <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="services.html">All Services</a>
+                        <a href="softlanding.html">Soft Landing</a>
+                        <a href="consult.html">Consultation</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Tools <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="eligibility.html">Eligibility Check</a>
+                        <a href="checklist.html">Visa Checklist</a>
+                        <a href="calculator.html">EMI Calculator</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Resources <i class="fas fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="blog.html">Blog</a>
+                        <a href="resources.html">Study Guides</a>
+                    </div>
+                </div>
                 <a href="about.html">About</a>
-                <a href="consult.html" class="btn btn-primary" style="padding: 8px 16px;">Book Consultation</a>
+                <a href="consult.html" class="btn btn-primary" style="padding: 8px 16px; margin-left: 10px;">Book Call</a>
             </div>
         </div>
     </nav>
@@ -146,24 +174,24 @@
             <h2 style="margin-bottom: 1.5rem;" class="text-gradient-accent">Apply for Job</h2>
             <form id="apply-form">
                 <div class="form-group">
-                    <label>Applying for</label>
-                    <input type="text" id="apply-job-title" class="form-control" readonly style="background: rgba(255,255,255,0.02); opacity: 0.7;">
+                    <label>Job Title</label>
+                    <input type="text" id="apply-job-title" name="jobTitle" class="form-control" readonly style="background: rgba(255,255,255,0.02); opacity: 0.7;">
                 </div>
                 <div class="form-group">
                     <label>Full Name</label>
-                    <input type="text" class="form-control" required placeholder="Enter your full name">
+                    <input type="text" name="fullName" class="form-control" required placeholder="Enter your full name">
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="form-control" required placeholder="you@example.com">
+                    <input type="email" name="email" class="form-control" required placeholder="you@example.com">
                 </div>
                 <div class="form-group">
                     <label>Phone / WhatsApp</label>
-                    <input type="tel" class="form-control" required placeholder="+91 xxxxxxxxxx">
+                    <input type="tel" name="phone" class="form-control" required placeholder="+91 xxxxxxxxxx">
                 </div>
                 <div class="form-group">
                     <label>JLPT Level</label>
-                    <select class="form-control" required>
+                    <select name="jlptLevel" class="form-control" required>
                         <option value="" disabled selected>Select Level</option>
                         <option value="N4">N4 (Passed)</option>
                         <option value="N5">N5 (Passed)</option>
@@ -173,16 +201,64 @@
                 </div>
                 <div class="form-group">
                     <label>Current City</label>
-                    <input type="text" class="form-control" required placeholder="e.g. Delhi, Mumbai">
+                    <input type="text" name="currentCity" class="form-control" required placeholder="e.g. Delhi, Mumbai">
                 </div>
                 <div class="form-group">
-                    <label>Upload Resume (PDF)</label>
-                    <input type="file" accept=".pdf" class="form-control" style="padding: 9px 15px;">
+                    <label>Resume</label>
+                    <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;">We will ask for your resume later via WhatsApp.</p>
                 </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Application</button>
             </form>
         </div>
     </div>
+
+    
+    <!-- Job Alerts Section -->
+    <section class="container fade-in" style="margin-top: 4rem; margin-bottom: 4rem;">
+        <div style="background: var(--glass-bg); backdrop-filter: blur(16px); border: 1px solid var(--primary-color); border-radius: 20px; padding: 3rem; text-align: center; max-width: 800px; margin: 0 auto;">
+            <h2 style="margin-bottom: 1rem; color: var(--text-color);">Get Job Alerts</h2>
+            <p style="color: var(--text-light); margin-bottom: 2rem;">Don't miss out! Get notified the moment a new Japan SSW job opens up in your field.</p>
+            
+            <form id="jobAlertForm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: left;">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="name" class="form-control" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Preferred Sector</label>
+                    <select name="sector" class="form-control" required>
+                        <option value="">Select Sector</option>
+                        <option value="Transport">Auto Transport (Truck/Taxi)</option>
+                        <option value="Warehouse">Warehouse & Logistics</option>
+                        <option value="Manufacturing">Manufacturing & Factory</option>
+                        <option value="Agriculture">Agriculture</option>
+                        <option value="Care Worker">Care Worker (Kaigo)</option>
+                        <option value="Food Service">Food & Beverage</option>
+                        <option value="Any">Any Sector</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Preferred City in Japan</label>
+                    <select name="city" class="form-control" required>
+                        <option value="">Select City</option>
+                        <option value="Tokyo">Tokyo / Kanto Region</option>
+                        <option value="Osaka">Osaka / Kansai Region</option>
+                        <option value="Nagoya">Nagoya / Aichi Region</option>
+                        <option value="Fukuoka">Fukuoka / Kyushu Region</option>
+                        <option value="Any">Any City</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="grid-column: 1 / -1; width: 100%; padding: 15px; font-size: 1.1rem; margin-top: 1rem;">Subscribe for Alerts</button>
+            </form>
+            <div id="jobAlertSuccess" style="display: none; color: #4ade80; margin-top: 1.5rem; font-weight: bold;">
+                <i class="fas fa-check-circle"></i> Subscribed successfully! Please check your email.
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -198,6 +274,11 @@
                         <li><a href="jobs.html">Find Jobs</a></li>
                         <li><a href="services.html">Our Services</a></li>
                         <li><a href="softlanding.html">Soft Landing Package</a></li>
+                        <li><a href="checklist.html">Checklist</a>
+                <a href="calculator.html">EMI Calculator</a>
+                <a href="resources.html">Resources</a>
+                <a href="eligibility.html">Eligibility Check</a></li>
+                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="about.html">About Us</a></li>
                     </ul>
                 </div>
@@ -205,8 +286,8 @@
                     <h4>Contact</h4>
                     <ul>
                         <li><a href="consult.html">Book Consultation</a></li>
-                        <li><a href="#"><i class="fab fa-whatsapp"></i> +91 XXXXXXXXXX</a></li>
-                        <li><a href="#"><i class="fas fa-envelope"></i> hello@nihonnest.in</a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i> +91 8191092773</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> nitinn1924@gmail.com</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -226,12 +307,51 @@
     <!-- WhatsApp Float -->
     <div class="whatsapp-float-container">
         <div class="whatsapp-tooltip">Chat with us</div>
-        <a href="https://wa.me/919999999999?text=Hi,%20I%20want%20to%20go%20Japan%20from%20India%20%F0%9F%87%AE%F0%9F%87%B3" class="whatsapp-float pulse" target="_blank" aria-label="Chat on WhatsApp">
+        <a href="https://wa.me/918191092773?text=Hi,%20I%20want%20to%20go%20Japan%20from%20India%20%F0%9F%87%AE%F0%9F%87%B3" class="whatsapp-float pulse" target="_blank" aria-label="Chat on WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
 
     <script src="js/main.js"></script>
     <script src="js/jobs.js"></script>
+
+    <script>
+        document.getElementById('jobAlertForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerText;
+            const successMsg = document.getElementById('jobAlertSuccess');
+            
+            submitBtn.innerText = 'Subscribing...';
+            submitBtn.disabled = true;
+            
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            try {
+                const response = await fetch('/api/job-alerts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    form.reset();
+                    form.style.display = 'none';
+                    successMsg.style.display = 'block';
+                } else {
+                    const resData = await response.json();
+                    alert(resData.error || 'Failed to subscribe. Try again later.');
+                    submitBtn.innerText = originalText;
+                    submitBtn.disabled = false;
+                }
+            } catch (err) {
+                alert('Network error. Try again later.');
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
 </body>
 </html>
